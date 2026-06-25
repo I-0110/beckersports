@@ -69,7 +69,7 @@ export default function Nav() {
     ]
 
     return (
-    <nav className="sticky top-0 z-50 bg-chiefs-1 border-b border-chiefs-3 shadow-md">
+    <nav className="sticky top-0 z-50 w-full bg-chiefs-1 border-b border-chiefs-3 shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Mobile hamburger - left side */}
