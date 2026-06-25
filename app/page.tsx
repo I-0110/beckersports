@@ -7,7 +7,7 @@ import VideoSection from "./ui/latest-snfb-videos/videoSection";
 export default function Home() {
 
   return (
-    <div className="flex flex-col flex-1">
+    <div>
       <Nav />
       <main>
         {/* Hero — newest post */}

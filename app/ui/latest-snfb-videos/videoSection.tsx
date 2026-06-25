@@ -14,14 +14,14 @@ export default async function VideoSection() {
  
       {/* Header */}
       <div className="flex items-center justify-between mb-4 pb-3 border-b border-chiefs-light">
-        <h2 className="font-logo text-sm tracking-wider uppercase text-chiefs-a">
+        <h2 className="font-logo text-sm tracking-wider uppercase text-chiefs-light">
           Sunday Night Foodball Videos
         </h2>
         <Link
           href="https://www.youtube.com/@sundaynightfoodball"
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 font-nav text-sm text-chiefs-a opacity-70 hover:opacity-100 transition-opacity"
+          className="font-nav text-base lg:text-lg inline-flex items-center gap-2 text-chiefs-a hover:brightness-150 transition-all"
         >
           Watch all on YouTube
           <ArrowRightIcon className="w-4 h-4" />

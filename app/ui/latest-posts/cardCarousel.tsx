@@ -13,7 +13,7 @@ export default function CardCarousel({
     if (!posts || posts.length === 0) return null;
 
     return (
-        <section className="bg-chiefs-light py-6 sm:px-8 lg:px-12">
+        <section className="bg-chiefs-light py-6 px-6 sm:px-8 lg:px-12">
 
             {/* Section Header */}
             <div className="flex items-center justify-between mb-4 pb-3 border-b border-chiefs-2">
