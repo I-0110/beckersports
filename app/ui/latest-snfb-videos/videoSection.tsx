@@ -1,0 +1,35 @@
+import { fetchLatestVideos } from "@/app/lib/snfb-video/functions";
+import Link from 'next/link';
+import VideoGrid from '@/app/ui/latest-snfb-videos/videoGrid';
+import { ArrowRightIcon } from "@heroicons/react/24/outline";
+
+export default async function VideoSection() {
+  const channelId = process.env.YOUTUBE_CHANNEL_ID ?? '';
+  const videos    = await fetchLatestVideos(channelId, 7);
+ 
+  if (!videos.length) return null;
+ 
+  return (
+    <section className="bg-chiefs-dark py-6 px-6 sm:px-8 lg:px-12">
+ 
+      {/* Header */}
+      <div className="flex items-center justify-between mb-4 pb-3 border-b border-chiefs-light">
+        <h2 className="font-logo text-sm tracking-wider uppercase text-chiefs-a">
+          Sunday Night Foodball Videos
+        </h2>
+        <Link
+          href="https://www.youtube.com/@sundaynightfoodball"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center gap-2 font-nav text-sm text-chiefs-a opacity-70 hover:opacity-100 transition-opacity"
+        >
+          Watch all on YouTube
+          <ArrowRightIcon className="w-4 h-4" />
+        </Link>
+      </div>
+ 
+      {/* Grid */}
+      <VideoGrid videos={videos} />
+    </section>
+  );
+}

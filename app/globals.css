@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+:root {
+  --light: #ffffff;
+  --dark: #000000;
+}
+
+@theme inline {
+  /* Font families */
+  --font-logo: "Tourney";
+  --font-nav: "Caveat";
+  --font-post-title: "Tourney";
+  --font-post-content: "Lora";
+  /* Colors */
+  --color-chiefs-1: #E31837; /* Navbar background */
+  --color-chiefs-a: #FFB81C; /* Accents and highlights background */
+  --color-chiefs-2: #222222; /* Cards borders, headings */
+  --color-chiefs-3: #767676; /* Subtle text, captions */
+  --color-chiefs-light: #ffffff; /* Page and cards background on light mode, text on dark mode */
+  --color-chiefs-dark: #000000; /* Footer, overlay, page and cards background on dark mode, text on light mode */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: var(--color-chiefs-dark);
+    --foreground: var(--color-chiefs-light);
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-post-title), var(--font-nav), var(--font-post-content), sans-serif;
+}
