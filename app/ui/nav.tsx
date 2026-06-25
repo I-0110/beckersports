@@ -88,10 +88,9 @@ export default function Nav() {
           {/* Logo - centered on mobile, left on desktop */}
           <Link 
             href="/" 
-            className="text-3xl font-logo font-bold text-chiefs-a lg:shrink-0"
+            className="font-logo font-bold text-chiefs-a text-xl lg:text-3xl lg:shrink-0"
           >
-            {/* <BeckerLogo /> */}
-            <h2>Becker Sports</h2>
+            Becker Sports
           </Link>
 
           {/* Desktop Navigation - center */}
@@ -110,7 +109,7 @@ export default function Nav() {
           </div>
 
           {/* Right side icons: TODO uncomment when buttons are working */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-1 lg:space-x-4">
             {/* <button className="p-2 text-chiefs-200 hover:text-thyme-100" aria-label="Search">
               <MagnifyingGlassIcon className="w-6 h-6" />
             </button> */}
@@ -129,13 +128,13 @@ export default function Nav() {
                 {/* Writer log and signout for everyone logged */}
                 <button 
                   onClick={() => router.push("/post")}
-                  className="p-2 text-chiefs-light hover:text-chiefs-a" aria-label="Login"
+                  className="hidden lg:block p-2 text-chiefs-light hover:text-chiefs-a"
                 >
                   <PencilSquareIcon className="w-6 h-6" />
                 </button>
                 <button 
                   onClick={() => router.push("/dashboard")}
-                  className="p-2 text-chiefs-light hover:text-chiefs-a" aria-label="Login"
+                  className="hidden lg:block p-2 text-chiefs-light hover:text-chiefs-a"
                 >
                   <BuildingOfficeIcon className="w-6 h-6" />
                 </button>
@@ -150,10 +149,11 @@ export default function Nav() {
               {/* // Not logged in — show Subscribe only */}
               <button
                 onClick={() => router.push("/subscribe")}
-                className="font-nav text-xl block text-center bg-chiefs-a text-chiefs-dark font-bold py-3 px-3 rounded-md hover:brightness-125 transition-all"
-                aria-label="Subscribe"
+                className="font-nav font-bold text-chiefs-dark bg-chiefs-a rounded-md hover:brightness-125 transition-all
+                  text-sm py-1.5 px-2
+                  lg:text-xl lg:py-3 lg:px-3"
               >
-                <h2>Subscribe</h2>
+                Subscribe
               </button>
             {/* )} */}
           </div>
@@ -176,8 +176,23 @@ export default function Nav() {
             >
               {link.label}
             </Link>
-          )
-        )}
+          ))}
+          <Link
+            key='/dashboard'
+            href='/dashboard'
+            onClick={() => setOpen(false)}
+            className="block px-3 py-3 text-chiefs-light hover:text-chiefs-a rounded-md font-nav text-xl transition-colors"
+          >
+            Writer&apos;s Dashboard 
+          </Link>
+          <Link
+            key='/post'
+            href='/post'
+            onClick={() => setOpen(false)}
+            className="block px-3 py-3 text-chiefs-light hover:text-chiefs-a rounded-md font-nav text-xl transition-colors"
+          >
+            Post 
+          </Link>
         </div>
       </div>
     </nav>
