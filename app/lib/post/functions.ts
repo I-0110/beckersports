@@ -11,7 +11,7 @@ export function excerpt(content: string, maxLength = 150): string {
         : plain
 }
 
-export function formatDate(date: Date): string {
+export function formatDate(date: Date | string): string {
     return new Intl.DateTimeFormat('en-US', {
         month: 'short',
         day: 'numeric',
