@@ -19,10 +19,13 @@ export function formatDate(date: Date | string): string {
     }).format(new Date(date));
 }
 
-export function getCategoryConfig(category: string) {
-    return CategoryConfig[category.toLowerCase()] ?? {
-        label: category,
-        bg: "bg-chiefs-1",
-        description: ""
-    };
+export function getCategoryConfig(category: string | null) {
+  const key = category?.toLowerCase() ?? "uncategorized";
+  return (
+    CategoryConfig[key] ?? {
+      label: category ?? "Uncategorized",
+      bg: "bg-chiefs-1",
+      description: "",
+    }
+  );
 }

@@ -31,31 +31,27 @@ export default function Nav() {
             label: 'Home' 
         },
         { 
-          href: '/hof', 
+          href: '/category/hof', 
           label: 'Hall of Fame' 
         },
         // { 
-        //   href: '/fantasy',  
+        //   href: '/category/fantasy',  
         //   label: 'Fantasy'      
         // },
+        { 
+          href: '/category/draft',    
+          label: 'Draft'        
+        },
+        { 
+          href: '/category/chiefs',   
+          label: 'Chiefs'       
+        },
+        { 
+          href: '/category/101',      
+          label: '101'          
+        },
         // { 
-        //   href: '/draft',    
-        //   label: 'Draft'        
-        // },
-        // { 
-        //   href: '/chiefs',   
-        //   label: 'Chiefs'       
-        // },
-        // { 
-        //   href: '/snfb',      
-        //   label: 'Sunday Night Food Ball'          
-        // },
-        // { 
-        //   href: '/101',      
-        //   label: '101'          
-        // },
-        // { 
-        //   href: '/podcast',  
+        //   href: '/category/podcast',  
         //   label: 'Podcast'      
         // },
         {
@@ -127,13 +123,13 @@ export default function Nav() {
                 )} */}
                 {/* Writer log and signout for everyone logged */}
                 <button 
-                  onClick={() => router.push("/post")}
+                  onClick={() => router.push("/admin/posts/new")}
                   className="hidden lg:block p-2 text-chiefs-light hover:text-chiefs-a"
                 >
                   <PencilSquareIcon className="w-6 h-6" />
                 </button>
                 <button 
-                  onClick={() => router.push("/dashboard")}
+                  onClick={() => router.push("/admin")}
                   className="hidden lg:block p-2 text-chiefs-light hover:text-chiefs-a"
                 >
                   <BuildingOfficeIcon className="w-6 h-6" />
@@ -178,16 +174,16 @@ export default function Nav() {
             </Link>
           ))}
           <Link
-            key='/dashboard'
-            href='/dashboard'
+            key='/admin'
+            href='/admin/login'
             onClick={() => setOpen(false)}
             className="block px-3 py-3 text-chiefs-light hover:text-chiefs-a rounded-md font-nav text-xl transition-colors"
           >
             Writer&apos;s Dashboard 
           </Link>
           <Link
-            key='/post'
-            href='/post'
+            key='/admin/posts'
+            href='/admin/posts'
             onClick={() => setOpen(false)}
             className="block px-3 py-3 text-chiefs-light hover:text-chiefs-a rounded-md font-nav text-xl transition-colors"
           >

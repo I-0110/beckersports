@@ -17,14 +17,14 @@ export function HeroEmpty() {
   );
 }
 
-/* ── Hero ────────────────────────────────────────── */
+/* Hero */
 
 export default function Hero({ posts }: { posts: HeroPost[] }) {
   if (!posts || posts.length === 0) return <HeroEmpty />;
 
   // Always show the newest post (first in the array)
   const post = posts[0];
-  const cat  = getCategoryConfig(post.category);
+  const cat  = getCategoryConfig(post.category?.name ?? "Uncategorized");
   const mins = readTime(post.content);
   const href = `/posts/${post.slug ?? post.id}`;
 
@@ -44,7 +44,7 @@ export default function Hero({ posts }: { posts: HeroPost[] }) {
           {cat.label}
         </span>
         <span className="font-post-content text-xs italic text-chiefs-3">
-          {formatDate(post.createdAt)} · {mins} min read
+          {formatDate(post.publishedAt ?? post.createdAt)} · {mins} min read
         </span>
       </div>
 

@@ -4,12 +4,11 @@ import { getCategoryConfig, readTime, formatDate, excerpt } from '@/app/lib/post
 import { ArrowRightIcon } from '@heroicons/react/24/outline';
 
 export default function PostCard({ post }: { post: HeroPost }) {
-  const cat = getCategoryConfig(post.category);
+  const cat = getCategoryConfig(post.category?.name ?? null);
   const mins = readTime(post.content);
   const createdAt = post.createdAt instanceof Date ? post.createdAt : new Date(post.createdAt);
   const href = `/posts/${post.slug ?? post.id}`;
-  const hrefCat = `/${post.category}`;
-
+  const hrefCat = `/category/${post.category?.slug ?? ""}`;
   return (
     <div className="
       flex w-60 sm:w-70 flex-col border border-chiefs-2 rounded-xl overflow-hidden bg-chiefs-light snap-start">
