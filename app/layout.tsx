@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Tourney, Caveat, Lora } from "next/font/google";
 import "./globals.css";
 import Providers from "./ui/providers";
+import NavWrapper from "@/app/ui/nav-wrapper";
 
 const tourneyBold = Tourney({
   variable: "--font-tourney-bold",
@@ -43,6 +44,7 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col">
         <Providers>
+          <NavWrapper />
           {children}
         </Providers>
       </body>

@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import Nav from "@/app/ui/nav";
 import CategoryPosts from "@/app/ui/category/category-posts";
 import { db } from "@/app/lib/db";
 
@@ -55,7 +54,6 @@ export default async function CategoryPage({
 
   return (
     <div>
-      <Nav />
       <main className="max-w-5xl mx-auto px-6 py-12">
         <CategoryPosts
           posts={posts}

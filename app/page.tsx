@@ -1,4 +1,3 @@
-import Nav from "./ui/nav";
 import Hero, { HeroEmpty } from "./ui/hero";
 import CardCarousel from "./ui/latest-posts/cardCarousel";
 import VideoSection from "./ui/latest-snfb-videos/videoSection";
@@ -14,7 +13,6 @@ export default async function Home() {
 
   return (
     <div>
-      <Nav />
       <main>
         {/* Hero — newest post */}
         {posts.length > 0 ? (

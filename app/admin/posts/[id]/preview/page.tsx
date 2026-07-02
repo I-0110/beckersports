@@ -4,7 +4,6 @@ import { redirect, notFound } from "next/navigation";
 import { db } from "@/app/lib/db";
 import PostHeader from "@/app/ui/post/post-header";
 import PostContent from "@/app/ui/post/post-content";
-import Nav from "@/app/ui/nav";
 import { ChevronDownIcon, EyeIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 
@@ -27,8 +26,6 @@ export default async function PreviewPage({
 
   return (
     <div>
-      <Nav />
-
       {/* Draft preview banner */}
       <div className="bg-yellow-50 border-b border-yellow-200 px-6 py-2 flex items-center justify-between">
         <div className="flex items-center gap-2">

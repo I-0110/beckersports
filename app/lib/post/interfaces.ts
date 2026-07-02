@@ -65,3 +65,13 @@ export interface CategoryPostProps {
     totalPages: number;
     slug: string;
 }
+
+
+interface NavCategory {
+  name: string;
+  slug: string;
+}
+
+export interface NavProps {
+  categories: NavCategory[];
+}

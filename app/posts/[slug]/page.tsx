@@ -1,5 +1,4 @@
 import { notFound } from "next/navigation";
-import Nav from "@/app/ui/nav";
 import PostHeader from "@/app/ui/post/post-header";
 import PostContent from "@/app/ui/post/post-content";
 import PostFooter from "@/app/ui/post/post-footer";
@@ -24,7 +23,6 @@ export default async function PostPage({
 
     return (
     <div>
-      <Nav />
       <main className="max-w-3xl mx-auto px-6 py-12">
         <PostHeader
           title={post.title}
