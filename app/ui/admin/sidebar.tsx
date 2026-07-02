@@ -33,9 +33,12 @@ export default function AdminSidebar() {
         <aside className="w-48 min-h-screen bg-chiefs-light border-r border-chiefs-2 flex flex-col">
             {/* Logo */}
             <div className="bg-chiefs-1 h-14 flex items-center px-4 border-b border-gray-200">
-                <span className="font-logo text-chiefs-a font-bold tracking-wide text-md uppercase">
-                Becker Sports
-                </span>
+                <Link 
+                    href="/" 
+                    className="font-logo font-bold text-chiefs-a"
+                >
+                    Becker Sports
+                </Link>
             </div>
 
             {/* Navigation */}

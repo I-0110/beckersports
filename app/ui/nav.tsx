@@ -3,10 +3,11 @@
 import { useState } from 'react';
 import { useRouter } from "next/navigation";
 import Link from 'next/link';
+import { useSession, signOut } from 'next-auth/react';
 import { 
   Bars3Icon, 
   XMarkIcon,  
-  // PowerIcon,
+  PowerIcon,
   // MagnifyingGlassIcon,  
   // ChevronRightIcon,
   // ChevronLeftIcon,
@@ -15,15 +16,10 @@ import {
   BuildingOfficeIcon
 } from '@heroicons/react/24/outline';
 
-// import { signOut, useSession } from 'next-auth/react';
-
 export default function Nav() {
     const [open, setOpen] = useState(false);
-
-    // const { data: session, status } = useSession();
+    const { data: session } = useSession();
     const router = useRouter();
-
-    // if (status === "loading") return null;
 
     const navLinks = [
         { 
@@ -106,57 +102,46 @@ export default function Nav() {
 
           {/* Right side icons: TODO uncomment when buttons are working */}
           <div className="flex items-center space-x-1 lg:space-x-4">
-            {/* <button className="p-2 text-chiefs-200 hover:text-thyme-100" aria-label="Search">
-              <MagnifyingGlassIcon className="w-6 h-6" />
-            </button> */}
-            {/* {session ? ( */}
+            {/* Only show admin buttons when logged in */}
+            {session && (
               <>
-                {/* Special button for Teachers and Admin
-                {(session.user?.role === "TEACHER" || session.user?.role === "ADMIN") && (
-                  <button
-                    onClick={() => router.push("/teacher")}
-                    className="p-2 text-thyme-200 hover:text-thyme-100" 
-                    aria-label="Students"
-                  >
-                    <UserGroupIcon className="w-6 h-6" />
-                  </button>
-                )} */}
-                {/* Writer log and signout for everyone logged */}
-                <button 
+                <button
                   onClick={() => router.push("/admin/posts/new")}
                   className="hidden lg:block p-2 text-chiefs-light hover:text-chiefs-a"
+                  aria-label="New post"
                 >
                   <PencilSquareIcon className="w-6 h-6" />
                 </button>
-                <button 
+                <button
                   onClick={() => router.push("/admin")}
                   className="hidden lg:block p-2 text-chiefs-light hover:text-chiefs-a"
+                  aria-label="Admin dashboard"
                 >
                   <BuildingOfficeIcon className="w-6 h-6" />
                 </button>
-                {/* <button 
-                  onClick={() => signOut({ callbackUrl: "/login" })} 
-                  className="p-2 text-thyme-200 hover:text-thyme-100" aria-label="Sign Out"
+                <button
+                  onClick={() => signOut({ callbackUrl: "/admin/login" })}
+                  className="hidden lg:block p-2 text-chiefs-light hover:text-chiefs-a"
+                  aria-label="Sign out"
                 >
                   <PowerIcon className="w-6 h-6" />
-                </button> */}
+                </button>
               </>
-            {/* ) : ( */}
-              {/* // Not logged in — show Subscribe only */}
-              <button
-                onClick={() => router.push("/subscribe")}
-                className="font-nav font-bold text-chiefs-dark bg-chiefs-a rounded-md hover:brightness-125 transition-all
-                  text-sm py-1.5 px-2
-                  lg:text-xl lg:py-3 lg:px-3"
-              >
-                Subscribe
-              </button>
-            {/* )} */}
+            )}
+
+            <button
+              onClick={() => router.push("/subscribe")}
+              className="font-nav font-bold text-chiefs-dark bg-chiefs-a rounded-md hover:brightness-125 transition-all
+                text-sm py-1.5 px-2
+                lg:text-xl lg:py-3 lg:px-3"
+            >
+              Subscribe
+            </button>
           </div>
         </div>
       </div>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile menu */}
       <div
         className={`lg:hidden transition-all duration-300 ease-in-out overflow-hidden ${
           open ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
@@ -173,23 +158,24 @@ export default function Nav() {
               {link.label}
             </Link>
           ))}
-          <Link
-            key='/admin'
-            href='/admin/login'
-            onClick={() => setOpen(false)}
-            className="block px-3 py-3 text-chiefs-light hover:text-chiefs-a rounded-md font-nav text-xl transition-colors"
-          >
-            Writer&apos;s Dashboard 
-          </Link>
-          <Link
-            key='/admin/posts'
-            href='/admin/posts'
-            onClick={() => setOpen(false)}
-            className="block px-3 py-3 text-chiefs-light hover:text-chiefs-a rounded-md font-nav text-xl transition-colors"
-          >
-            Post 
-          </Link>
+          {session && (
+            <>
+              <Link href="/admin" onClick={() => setOpen(false)} className="block px-3 py-3 text-chiefs-light hover:text-chiefs-a rounded-md font-nav text-xl transition-colors">
+                Writer&apos;s Dashboard
+              </Link>
+              <Link href="/admin/posts/new" onClick={() => setOpen(false)} className="block px-3 py-3 text-chiefs-light hover:text-chiefs-a rounded-md font-nav text-xl transition-colors">
+                New Post
+              </Link>
+              <button
+                onClick={() => signOut({ callbackUrl: "/admin/login" })}
+                className="block w-full text-left px-3 py-3 text-chiefs-light hover:text-chiefs-a rounded-md font-nav text-xl transition-colors"
+              >
+                Sign Out
+              </button>
+            </>
+          )}
         </div>
       </div>
     </nav>
-)};
+  );
+}

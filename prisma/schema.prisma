@@ -33,3 +33,12 @@ model Post {
   category    Category? @relation(fields: [categoryId], references: [id])
   categoryId  String?
 }
+
+model Subscriber {
+  id          String   @id @default(cuid())
+  name        String
+  email       String   @unique
+  categories  String[]
+  createdAt   DateTime @default(now())
+  active      Boolean  @default(true)
+}

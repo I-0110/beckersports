@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import TiptapEditor from "./tiptap-editor";
 import { createPost, updatePost } from "@/app/lib/actions/post-actions";
 import type { Category, Post } from "@prisma/client";
+import Link from "next/link";
 
 interface PostFormProps {
   categories: Category[];
@@ -159,6 +160,20 @@ export default function PostForm({ categories, post }: PostFormProps) {
         >
           {saving ? "Saving..." : isEditMode ? "Update & Publish" : "Publish"}
         </button>
+
+        {/* Preview — only available in edit mode since we need the post ID */}
+        {isEditMode || post && (
+          <Link
+              href={`/admin/posts/${post.id}/preview`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-1.5 border border-green-200 text-green-700 bg-green-50 hover:bg-green-100 text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+            >
+              <i className="ti ti-eye text-base" aria-hidden="true" />
+              Preview
+            </Link>
+        )}
+
         <button
           type="button"
           onClick={() => router.push("/admin")}
