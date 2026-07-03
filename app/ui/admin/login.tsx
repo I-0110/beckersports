@@ -43,7 +43,7 @@ export default function LoginForm() {
         playsInline
         className="absolute inset-0 w-full h-full object-cover z-0"
       >
-        <source src="/videos/login-bg.mp4" type="video/mp4" />
+        <source src="/steak.mp4" type="video/mp4" />
       </video>
 
       {/* Dark overlay */}
