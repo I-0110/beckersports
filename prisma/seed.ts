@@ -9,7 +9,7 @@ const categories = [
     },
     {
         name: "Chiefs",
-        slug: "chiefs"
+        slug: "KC"
     },
     {
         name: "Draft",

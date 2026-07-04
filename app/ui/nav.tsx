@@ -12,6 +12,7 @@ import {
   PowerIcon,
 } from '@heroicons/react/24/outline';
 import { NavProps } from '@/app/lib/post/interfaces';
+import SubscribeModal from "@/app/ui/subscribe/subscribe-modal";
 
 export default function Nav({ categories }: NavProps) {
   const [open, setOpen] = useState(false);
@@ -103,14 +104,7 @@ export default function Nav({ categories }: NavProps) {
               </>
             )}
 
-            <button
-              onClick={() => router.push("/subscribe")}
-              className="font-nav font-bold text-chiefs-dark bg-chiefs-a rounded-md hover:brightness-125 transition-all
-                text-sm py-1.5 px-2
-                lg:text-xl lg:py-3 lg:px-3"
-            >
-              Subscribe
-            </button>
+            <SubscribeModal />
           </div>
         </div>
       </div>
