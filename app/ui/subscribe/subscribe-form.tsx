@@ -2,22 +2,9 @@
 
 import { useState } from "react";
 import { subscribe } from "@/app/lib/actions/subscribe-actions";
+import { SubscribeFormProps } from "@/app/lib/post/interfaces";
 
-const CATEGORIES = [
-  { label: "Chiefs", slug: "KC" },
-  { label: "Fantasy", slug: "fantasy" },
-  { label: "Draft", slug: "draft" },
-  { label: "Hall of Fame", slug: "hof" },
-  { label: "SNF", slug: "snf" },
-  { label: "101", slug: "101" },
-  { label: "Podcast", slug: "podcast" },
-];
-
-interface SubscribeFormProps {
-  onSuccess?: () => void;
-}
-
-export default function SubscribeForm({ onSuccess }: SubscribeFormProps) {
+export default function SubscribeForm({ onSuccess, categories }: SubscribeFormProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
@@ -101,7 +88,7 @@ export default function SubscribeForm({ onSuccess }: SubscribeFormProps) {
           Topics you care about
         </label>
         <div className="flex flex-wrap gap-2">
-          {CATEGORIES.map((cat) => {
+          {categories.map((cat) => {
             const active = selectedCategories.includes(cat.slug);
             return (
               <button
@@ -111,10 +98,10 @@ export default function SubscribeForm({ onSuccess }: SubscribeFormProps) {
                 className={`font-nav text-xs px-3 py-1.5 rounded-full font-bold border transition-colors ${
                   active
                     ? "bg-chiefs-1 text-chiefs-light border-chiefs-1"
-                    : "bg-white text-chiefs-2 border-gray-200 hover:border-chiefs-1 hover:text-chiefs-1"
+                    : "bg-white/10 text-chiefs-light border-chiefs-3 hover:border-chiefs-1 hover:text-chiefs-a"
                 }`}
               >
-                {cat.label}
+                {cat.name}
               </button>
             );
           })}

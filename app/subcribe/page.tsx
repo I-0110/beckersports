@@ -1,6 +1,17 @@
+import { db } from "@/app/lib/db";
 import SubscribeForm from "@/app/ui/subscribe/subscribe-form";
 
-export default function SubscribePage() {
+export default async function SubscribePage() {
+  const categories = await db.category.findMany({
+    where: {
+      posts: {
+        some: { published: true },
+      },
+    },
+    orderBy: { name: "asc" },
+    select: { name: true, slug: true },
+  });
+
   return (
     <div className="min-h-screen bg-chiefs-dark">
       {/* Hero */}
@@ -16,7 +27,7 @@ export default function SubscribePage() {
       {/* Form */}
       <div className="max-w-md mx-auto px-6 py-12">
         <div className="bg-white rounded-2xl p-8 shadow-lg">
-          <SubscribeForm />
+          <SubscribeForm categories={categories} />
         </div>
       </div>
     </div>

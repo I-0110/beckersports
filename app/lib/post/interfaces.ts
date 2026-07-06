@@ -67,11 +67,16 @@ export interface CategoryPostProps {
 }
 
 
-interface NavCategory {
+export interface Categories {
   name: string;
   slug: string;
 }
 
 export interface NavProps {
-  categories: NavCategory[];
+  categories: Categories[];
+}
+
+export interface SubscribeFormProps {
+    onSuccess?: () => void;
+    categories: Categories[];
 }
