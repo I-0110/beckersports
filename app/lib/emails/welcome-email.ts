@@ -1,14 +1,19 @@
+import { generateUnsubscribeToken } from "@/app/lib/emails/unsubscribe-token";
+
 export function welcomeEmailHtml({
   name,
   categories,
+  email,
 }: {
   name: string;
   categories: string[];
+  email: string;
 }) {
   const categoryList =
-    categories.length > 0
-      ? categories.join(", ")
-      : "all topics";
+    categories.length > 0 ? categories.join(", ") : "all topics";
+
+  const token = generateUnsubscribeToken(email);
+  const unsubscribeUrl = `https://beckersports.com/unsubscribe?email=${encodeURIComponent(email)}&token=${token}`;
 
   return `
     <!DOCTYPE html>
@@ -48,12 +53,21 @@ export function welcomeEmailHtml({
                       You signed up for: <strong style="color:#dc2626;">${categoryList}</strong>
                     </p>
 
-                    <!-- Divider -->
+                    <!-- CTA -->
+                    <table cellpadding="0" cellspacing="0" style="margin:0 0 24px;">
+                      <tr>
+                        <td style="background:#dc2626;border-radius:8px;padding:12px 24px;text-align:center;">
+                          <a href="https://beckersports.com" style="font-family:Georgia,serif;font-size:16px;font-weight:700;color:#fbbf24;text-decoration:none;">
+                            Read the latest →
+                          </a>
+                        </td>
+                      </tr>
+                    </table>
+
                     <hr style="border:none;border-top:1px solid #e0e0dc;margin:24px 0;" />
 
                     <p style="margin:0;font-family:Georgia,serif;font-size:14px;color:#888;line-height:1.6;">
-                      If you didn't sign up for this, you can safely ignore this email. 
-                      You won't receive any further emails unless you sign up at beckersports.com.
+                      If you didn't sign up for this, you can safely ignore this email.
                     </p>
                   </td>
                 </tr>
@@ -61,9 +75,13 @@ export function welcomeEmailHtml({
                 <!-- Footer -->
                 <tr>
                   <td style="background:#1a1a1a;padding:24px 40px;text-align:center;">
-                    <p style="margin:0;font-family:Georgia,serif;font-size:12px;color:#888;">
-                      © ${new Date().getFullYear()} Becker Sports · 
+                    <p style="margin:0 0 8px;font-family:Georgia,serif;font-size:12px;color:#888;">
+                      © ${new Date().getFullYear()} Becker Sports ·
                       <a href="https://beckersports.com" style="color:#fbbf24;text-decoration:none;">beckersports.com</a>
+                    </p>
+                    <p style="margin:0;font-family:Georgia,serif;font-size:11px;color:#666;">
+                      Don't want these emails? 
+                      <a href="${unsubscribeUrl}" style="color:#fbbf24;text-decoration:underline;">Unsubscribe</a>
                     </p>
                   </td>
                 </tr>

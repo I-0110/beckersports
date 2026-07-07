@@ -46,7 +46,7 @@ export async function subscribe(input: SubscribeInput) {
         from: process.env.RESEND_FROM_EMAIL!,
         to: email,
         subject: "You're in! Welcome to Becker Sports 🏈",
-        html: welcomeEmailHtml({ name, categories }),
+        html: welcomeEmailHtml({ name, categories, email }),
       });
       console.log("Email sent:", result);
     } catch {
