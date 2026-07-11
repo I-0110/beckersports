@@ -7,6 +7,7 @@ import { createPost, updatePost, publishPost, schedulePost } from "@/app/lib/act
 import type { Category, Post } from "@prisma/client";
 import Link from "next/link";
 import PublishConfirmModal from "./publish-confirm-modal";
+import { ClockIcon } from "@heroicons/react/24/outline";
 
 interface PostFormProps {
   categories: Category[];
@@ -246,7 +247,7 @@ export default function PostForm({ categories, post }: PostFormProps) {
           }}
           className="flex items-center gap-1.5 border border-chiefs-2 text-chiefs-2 bg-yellow-50 hover:bg-yellow-100 text-sm font-medium px-4 py-2 rounded-lg transition-colors disabled:opacity-50"
         >
-          <i className="ti ti-clock text-base" aria-hidden="true" />
+          <ClockIcon className="w-3 h-3" />
           Schedule
         </button>
       )}
