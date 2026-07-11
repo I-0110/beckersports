@@ -15,6 +15,7 @@ export function welcomeEmailHtml({
   const token = generateUnsubscribeToken(email);
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "https://beckersports.vercel.app";
   const unsubscribeUrl = `${baseUrl}/unsubscribe?email=${encodeURIComponent(email)}&token=${token}`;
+  const preferencesUrl = `${baseUrl}/preferences?email=${encodeURIComponent(email)}&token=${token}`;
 
   return `
     <!DOCTYPE html>
@@ -81,7 +82,8 @@ export function welcomeEmailHtml({
                       <a href="${baseUrl}" style="color:#fbbf24;text-decoration:none;">beckersports.com</a>
                     </p>
                     <p style="margin:0;font-family:Georgia,serif;font-size:11px;color:#666;">
-                      Don't want these emails? 
+                      <a href="${preferencesUrl}" style="color:#fbbf24;text-decoration:underline;">Manage preferences</a>
+                      &nbsp;·&nbsp;
                       <a href="${unsubscribeUrl}" style="color:#fbbf24;text-decoration:underline;">Unsubscribe</a>
                     </p>
                   </td>

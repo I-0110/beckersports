@@ -80,3 +80,22 @@ export interface SubscribeFormProps {
     onSuccess?: () => void;
     categories: Categories[];
 }
+
+export interface Subscriber {
+  name: string;
+  email: string;
+  categories: string[];
+}
+
+export interface PreferencesFormProps {
+  subscriber: Subscriber;
+  token: string;
+  availableCategories: Category[];
+}
+
+export interface PreferencesLoaderProps {
+  email: Subscriber["email"];
+  token: string;
+  availableCategories: Categories[];
+}
+
