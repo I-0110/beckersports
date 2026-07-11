@@ -90,7 +90,7 @@ export interface Subscriber {
 export interface PreferencesFormProps {
   subscriber: Subscriber;
   token: string;
-  availableCategories: Category[];
+  availableCategories: Categories[];
 }
 
 export interface PreferencesLoaderProps {
