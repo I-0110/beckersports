@@ -5,16 +5,7 @@ import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import { resend } from "@/app/lib/resend";
 import { postNotificationEmailHtml } from "@/app/lib/emails/post-notification-email";
-
-interface PostInput {
-  title: string;
-  slug: string;
-  categoryId: string;
-  excerpt: string;
-  content: string;
-  published: boolean;
-  publishedAt: string;
-}
+import { PostInput } from "@/app/lib/post/interfaces";
 
 export async function createPost(input: PostInput) {
   await db.post.create({
@@ -114,4 +105,16 @@ export async function publishPost(id: string, notifySubscribers: boolean) {
       })
     )
   );
+}
+
+export async function schedulePost(id: string, scheduledAt: string) {
+  await db.post.update({
+    where: { id },
+    data: {
+      published: false,
+      scheduledAt: new Date(scheduledAt),
+    },
+  });
+
+  revalidatePath("/admin");
 }

@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useTransition } from "react";
 import type { Post, Category } from "@prisma/client";
 import { deletePost, togglePostPublished } from "@/app/lib/actions/post-actions";
+import { ClockIcon } from "@heroicons/react/24/outline";
 
 type PostWithCategory = Post & { category: Category | null };
 
@@ -81,6 +82,44 @@ export default function PostsTable({ posts }: PostsTableProps) {
                   month: "short",
                   day: "numeric",
                 })}
+              </td>
+              <td className="px-4 py-3">
+                {post.scheduledAt && !post.published ? (
+                  <span className="inline-block px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                    Scheduled
+                  </span>
+                ) : (
+                  <button
+                    type="button"
+                    disabled={isPending}
+                    onClick={() => handleToggle(post.id, post.published)}
+                    className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium transition-opacity disabled:opacity-50 ${
+                      post.published
+                        ? "bg-green-100 text-green-800 hover:bg-green-200"
+                        : "bg-yellow-100 text-yellow-800 hover:bg-yellow-200"
+                    }`}
+                  >
+                    {post.published ? "Published" : "Draft"}
+                  </button>
+                )}
+              </td>
+              <td className="px-4 py-3 text-gray-500">
+                {post.scheduledAt && !post.published ? (
+                  <span className="text-blue-600 text-xs">
+                    <ClockIcon className="w-3 h-3 mr-1" />
+                    {new Date(post.scheduledAt).toLocaleDateString("en-US", {
+                      month: "short",
+                      day: "numeric",
+                      hour: "numeric",
+                      minute: "2-digit",
+                    })}
+                  </span>
+                ) : (
+                  new Date(post.publishedAt ?? post.createdAt).toLocaleDateString("en-US", {
+                    month: "short",
+                    day: "numeric",
+                  })
+                )}
               </td>
               <td className="px-4 py-3">
                 <div className="flex gap-2">

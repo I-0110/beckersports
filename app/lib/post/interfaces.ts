@@ -99,3 +99,12 @@ export interface PreferencesLoaderProps {
   availableCategories: Categories[];
 }
 
+export interface PostInput {
+  title: string;
+  slug: string;
+  categoryId: string;
+  excerpt: string;
+  content: string;
+  published: boolean;
+  publishedAt: string;
+}

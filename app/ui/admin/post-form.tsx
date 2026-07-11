@@ -3,11 +3,10 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import TiptapEditor from "./tiptap-editor";
-import { createPost, updatePost, publishPost } from "@/app/lib/actions/post-actions";
+import { createPost, updatePost, publishPost, schedulePost } from "@/app/lib/actions/post-actions";
 import type { Category, Post } from "@prisma/client";
 import Link from "next/link";
 import PublishConfirmModal from "./publish-confirm-modal";
-
 
 interface PostFormProps {
   categories: Category[];
@@ -42,6 +41,11 @@ export default function PostForm({ categories, post }: PostFormProps) {
   );
   const [saving, setSaving] = useState(false);
   const [showPublishModal, setShowPublishModal] = useState(false);
+  const [scheduledAt, setScheduledAt] = useState(
+    post?.scheduledAt
+      ? new Date(post.scheduledAt).toISOString().slice(0, 16)
+      : ""
+  );
 
   function handleTitleChange(value: string) {
     setTitle(value);
@@ -133,6 +137,25 @@ export default function PostForm({ categories, post }: PostFormProps) {
         />
       </div>
 
+      {/* Schedule */}
+      <div className="mb-5">
+        <label className="block text-sm font-medium text-gray-700 mb-1.5">
+          Schedule publish (optional)
+        </label>
+        <input
+          type="datetime-local"
+          value={scheduledAt}
+          onChange={(e) => setScheduledAt(e.target.value)}
+          min={new Date().toISOString().slice(0, 16)}
+          className="border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
+        />
+        {scheduledAt && (
+          <p className="font-post-content text-xs text-chiefs-3 mt-1">
+            Will auto-publish and notify subscribers at this time.
+          </p>
+        )}
+      </div>
+
       {/* Excerpt */}
       <div className="mb-5">
         <label className="block text-sm font-medium text-gray-700 mb-1.5">
@@ -205,6 +228,27 @@ export default function PostForm({ categories, post }: PostFormProps) {
           }}
           onCancel={() => setShowPublishModal(false)}
         />
+      )}
+
+      {isEditMode && post && scheduledAt && (
+        <button
+          type="button"
+          disabled={saving}
+          onClick={async () => {
+            setSaving(true);
+            try {
+              await schedulePost(post.id, scheduledAt);
+              router.push("/admin");
+            } catch {
+              alert("Something went wrong scheduling the post.");
+              setSaving(false);
+            }
+          }}
+          className="flex items-center gap-1.5 border border-chiefs-2 text-chiefs-2 bg-yellow-50 hover:bg-yellow-100 text-sm font-medium px-4 py-2 rounded-lg transition-colors disabled:opacity-50"
+        >
+          <i className="ti ti-clock text-base" aria-hidden="true" />
+          Schedule
+        </button>
       )}
     </div>
   );
