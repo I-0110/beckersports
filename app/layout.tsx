@@ -28,8 +28,18 @@ const lora = Lora({
 });
 
 export const metadata: Metadata = {
-  title: "Becker Sports | My Football Blog",
+  title: {
+    default: "Becker Sports | My Football Blog",
+    template: "%s | Becker Sports",
+  },
   description: "From a Chiefs fan to another football fan.",
+  openGraph: {
+    siteName: "Becker Sports",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({

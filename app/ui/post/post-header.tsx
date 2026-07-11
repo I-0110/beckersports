@@ -34,9 +34,6 @@ export default function PostHeader({
       <p className="font-post-content text-sm italic text-chiefs-3">
         {date} · {mins} min read
       </p>
-
-      {/* Divider */}
-      <div className="mt-6 border-t border-chiefs-2" />
     </header>
   );
 }

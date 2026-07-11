@@ -3,9 +3,11 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import TiptapEditor from "./tiptap-editor";
-import { createPost, updatePost } from "@/app/lib/actions/post-actions";
+import { createPost, updatePost, publishPost } from "@/app/lib/actions/post-actions";
 import type { Category, Post } from "@prisma/client";
 import Link from "next/link";
+import PublishConfirmModal from "./publish-confirm-modal";
+
 
 interface PostFormProps {
   categories: Category[];
@@ -39,6 +41,7 @@ export default function PostForm({ categories, post }: PostFormProps) {
     toDateInputValue(post?.publishedAt)
   );
   const [saving, setSaving] = useState(false);
+  const [showPublishModal, setShowPublishModal] = useState(false);
 
   function handleTitleChange(value: string) {
     setTitle(value);
@@ -50,6 +53,14 @@ export default function PostForm({ categories, post }: PostFormProps) {
       alert("Title is required.");
       return;
     }
+    if (published) {
+      setShowPublishModal(true);
+      return;
+    }
+    await savePost(false);
+  }
+
+  async function savePost(published: boolean, notifySubscribers = false) {
     setSaving(true);
     try {
       const input = {
@@ -62,7 +73,9 @@ export default function PostForm({ categories, post }: PostFormProps) {
         publishedAt,
       };
 
-      if (isEditMode && post) {
+      if (published && isEditMode && post) {
+        await publishPost(post.id, notifySubscribers);
+      } else if (isEditMode && post) {
         await updatePost(post.id, input);
       } else {
         await createPost(input);
@@ -182,6 +195,17 @@ export default function PostForm({ categories, post }: PostFormProps) {
           Cancel
         </button>
       </div>
+
+      {showPublishModal && (
+        <PublishConfirmModal
+          postTitle={title}
+          onConfirm={(notify) => {
+            setShowPublishModal(false);
+            savePost(true, notify);
+          }}
+          onCancel={() => setShowPublishModal(false)}
+        />
+      )}
     </div>
   );
 }
