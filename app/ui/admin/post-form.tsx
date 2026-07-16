@@ -11,7 +11,7 @@ import { ClockIcon } from "@heroicons/react/24/outline";
 
 interface PostFormProps {
   categories: Category[];
-  post?: Post; // if provided, form runs in edit mode
+  post?: Post;
 }
 
 function slugify(text: string) {
@@ -37,16 +37,14 @@ export default function PostForm({ categories, post }: PostFormProps) {
   const [categoryId, setCategoryId] = useState(post?.categoryId ?? "");
   const [excerpt, setExcerpt] = useState(post?.excerpt ?? "");
   const [content, setContent] = useState(post?.content ?? "");
-  const [publishedAt, setPublishedAt] = useState(
-    toDateInputValue(post?.publishedAt)
-  );
-  const [saving, setSaving] = useState(false);
-  const [showPublishModal, setShowPublishModal] = useState(false);
+  const [publishedAt, setPublishedAt] = useState(toDateInputValue(post?.publishedAt));
   const [scheduledAt, setScheduledAt] = useState(
     post?.scheduledAt
       ? new Date(post.scheduledAt).toISOString().slice(0, 16)
       : ""
   );
+  const [saving, setSaving] = useState(false);
+  const [showPublishModal, setShowPublishModal] = useState(false);
 
   function handleTitleChange(value: string) {
     setTitle(value);
@@ -94,6 +92,7 @@ export default function PostForm({ categories, post }: PostFormProps) {
 
   return (
     <div className="font-post-title text-chiefs-2 max-w-3xl">
+
       {/* Title */}
       <div className="mb-5">
         <label className="block text-sm font-medium mb-2">Title</label>
@@ -180,7 +179,7 @@ export default function PostForm({ categories, post }: PostFormProps) {
       </div>
 
       {/* Actions */}
-      <div className="flex items-center gap-3 pb-12">
+      <div className="flex flex-wrap items-center gap-3 pb-12">
         <button
           type="button"
           disabled={saving}
@@ -189,6 +188,7 @@ export default function PostForm({ categories, post }: PostFormProps) {
         >
           Save as draft
         </button>
+
         <button
           type="button"
           disabled={saving}
@@ -198,17 +198,39 @@ export default function PostForm({ categories, post }: PostFormProps) {
           {saving ? "Saving..." : isEditMode ? "Update & Publish" : "Publish"}
         </button>
 
-        {/* Preview — only available in edit mode since we need the post ID */}
-        {isEditMode || post && (
+        {/* Schedule — only shows when a future datetime is selected */}
+        {isEditMode && post && scheduledAt && (
+          <button
+            type="button"
+            disabled={saving}
+            onClick={async () => {
+              setSaving(true);
+              try {
+                await schedulePost(post.id, scheduledAt);
+                router.push("/admin");
+              } catch {
+                alert("Something went wrong scheduling the post.");
+                setSaving(false);
+              }
+            }}
+            className="flex items-center gap-1.5 border border-yellow-400 text-yellow-700 bg-yellow-50 hover:bg-yellow-100 text-sm font-medium px-4 py-2 rounded-lg transition-colors disabled:opacity-50"
+          >
+            <ClockIcon className="w-4 h-4" />
+            Schedule
+          </button>
+        )}
+
+        {/* Preview — only in edit mode */}
+        {isEditMode && post && (
           <Link
-              href={`/admin/posts/${post.id}/preview`}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 border border-green-200 text-green-700 bg-green-50 hover:bg-green-100 text-sm font-medium px-4 py-2 rounded-lg transition-colors"
-            >
-              <i className="ti ti-eye text-base" aria-hidden="true" />
-              Preview
-            </Link>
+            href={`/admin/posts/${post.id}/preview`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 border border-green-200 text-green-700 bg-green-50 hover:bg-green-100 text-sm font-medium px-4 py-2 rounded-lg transition-colors"
+          >
+            <i className="ti ti-eye text-base" aria-hidden="true" />
+            Preview
+          </Link>
         )}
 
         <button
@@ -229,27 +251,6 @@ export default function PostForm({ categories, post }: PostFormProps) {
           }}
           onCancel={() => setShowPublishModal(false)}
         />
-      )}
-
-      {isEditMode && post && scheduledAt && (
-        <button
-          type="button"
-          disabled={saving}
-          onClick={async () => {
-            setSaving(true);
-            try {
-              await schedulePost(post.id, scheduledAt);
-              router.push("/admin");
-            } catch {
-              alert("Something went wrong scheduling the post.");
-              setSaving(false);
-            }
-          }}
-          className="flex items-center gap-1.5 border border-chiefs-2 text-chiefs-2 bg-yellow-50 hover:bg-yellow-100 text-sm font-medium px-4 py-2 rounded-lg transition-colors disabled:opacity-50"
-        >
-          <ClockIcon className="w-3 h-3" />
-          Schedule
-        </button>
       )}
     </div>
   );
