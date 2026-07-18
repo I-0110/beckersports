@@ -107,14 +107,14 @@ export async function publishPost(id: string, notifySubscribers: boolean) {
   );
 }
 
-export async function schedulePost(id: string, scheduledAt: string) {
-  await db.post.update({
-    where: { id },
-    data: {
-      published: false,
-      scheduledAt: new Date(scheduledAt),
-    },
-  });
+// export async function schedulePost(id: string, scheduledAt: string) {
+//   await db.post.update({
+//     where: { id },
+//     data: {
+//       published: false,
+//       scheduledAt: new Date(scheduledAt),
+//     },
+//   });
 
-  revalidatePath("/admin");
-}
+//   revalidatePath("/admin");
+// }

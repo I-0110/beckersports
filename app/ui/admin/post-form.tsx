@@ -3,11 +3,16 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import TiptapEditor from "./tiptap-editor";
-import { createPost, updatePost, publishPost, schedulePost } from "@/app/lib/actions/post-actions";
+import { 
+  createPost, 
+  updatePost, 
+  publishPost, 
+  // schedulePost 
+} from "@/app/lib/actions/post-actions";
 import type { Category, Post } from "@prisma/client";
 import Link from "next/link";
 import PublishConfirmModal from "./publish-confirm-modal";
-import { ClockIcon } from "@heroicons/react/24/outline";
+// import { ClockIcon } from "@heroicons/react/24/outline";
 
 interface PostFormProps {
   categories: Category[];
@@ -38,11 +43,11 @@ export default function PostForm({ categories, post }: PostFormProps) {
   const [excerpt, setExcerpt] = useState(post?.excerpt ?? "");
   const [content, setContent] = useState(post?.content ?? "");
   const [publishedAt, setPublishedAt] = useState(toDateInputValue(post?.publishedAt));
-  const [scheduledAt, setScheduledAt] = useState(
-    post?.scheduledAt
-      ? new Date(post.scheduledAt).toISOString().slice(0, 16)
-      : ""
-  );
+  // const [scheduledAt, setScheduledAt] = useState(
+  //   post?.scheduledAt
+  //     ? new Date(post.scheduledAt).toISOString().slice(0, 16)
+  //     : ""
+  // );
   const [saving, setSaving] = useState(false);
   const [showPublishModal, setShowPublishModal] = useState(false);
 
@@ -138,7 +143,7 @@ export default function PostForm({ categories, post }: PostFormProps) {
       </div>
 
       {/* Schedule */}
-      <div className="mb-5">
+      {/* <div className="mb-5">
         <label className="block text-sm font-medium text-gray-700 mb-1.5">
           Schedule publish (optional)
         </label>
@@ -154,7 +159,7 @@ export default function PostForm({ categories, post }: PostFormProps) {
             Will auto-publish and notify subscribers at this time.
           </p>
         )}
-      </div>
+      </div> */}
 
       {/* Excerpt */}
       <div className="mb-5">
@@ -199,7 +204,7 @@ export default function PostForm({ categories, post }: PostFormProps) {
         </button>
 
         {/* Schedule — only shows when a future datetime is selected */}
-        {isEditMode && post && scheduledAt && (
+        {/* {isEditMode && post && scheduledAt && (
           <button
             type="button"
             disabled={saving}
@@ -218,7 +223,7 @@ export default function PostForm({ categories, post }: PostFormProps) {
             <ClockIcon className="w-4 h-4" />
             Schedule
           </button>
-        )}
+        )} */}
 
         {/* Preview — only in edit mode */}
         {isEditMode && post && (

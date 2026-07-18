@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useTransition } from "react";
 import type { Post, Category } from "@prisma/client";
 import { deletePost, togglePostPublished } from "@/app/lib/actions/post-actions";
-import { ClockIcon } from "@heroicons/react/24/outline";
+// import { ClockIcon } from "@heroicons/react/24/outline";
 
 type PostWithCategory = Post & { category: Category | null };
 
@@ -83,7 +83,7 @@ export default function PostsTable({ posts }: PostsTableProps) {
                   day: "numeric",
                 })}
               </td>
-              <td className="px-4 py-3">
+              {/* <td className="px-4 py-3">
                 {post.scheduledAt && !post.published ? (
                   <span className="inline-block px-2 py-0.5 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
                     Scheduled
@@ -120,7 +120,7 @@ export default function PostsTable({ posts }: PostsTableProps) {
                     day: "numeric",
                   })
                 )}
-              </td>
+              </td> */}
               <td className="px-4 py-3">
                 <div className="flex gap-2">
                   <Link
