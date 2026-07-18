@@ -13,7 +13,7 @@ export function welcomeEmailHtml({
     categories.length > 0 ? categories.join(", ") : "all topics";
 
   const token = generateUnsubscribeToken(email);
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "https://beckersports.vercel.app";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "https://beckersports.com";
   const unsubscribeUrl = `${baseUrl}/unsubscribe?email=${encodeURIComponent(email)}&token=${token}`;
   const preferencesUrl = `${baseUrl}/preferences?email=${encodeURIComponent(email)}&token=${token}`;
 

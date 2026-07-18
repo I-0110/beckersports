@@ -12,7 +12,7 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
 
   const url = typeof window !== "undefined" 
     ? `${window.location.origin}/posts/${slug}` 
-    : `https://beckersports.vercel.app/posts/${slug}`;
+    : `https://beckersports.com/posts/${slug}`;
 
   const encoded = encodeURIComponent(url);
   const encodedTitle = encodeURIComponent(title);

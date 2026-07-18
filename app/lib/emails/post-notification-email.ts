@@ -17,7 +17,7 @@ export function postNotificationEmailHtml({
   categoryColor: string;
 }) {
   const token = generateUnsubscribeToken(subscriberEmail);
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "https://beckersports.vercel.app";
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "https://beckersports.com";
   const postUrl = `${baseUrl}/posts/${postSlug}`;
   const unsubscribeUrl = `${baseUrl}/unsubscribe?email=${encodeURIComponent(subscriberEmail)}&token=${token}`;
   const preferencesUrl = `${baseUrl}/preferences?email=${encodeURIComponent(subscriberEmail)}&token=${token}`;
