@@ -21,7 +21,7 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
     {
       label: "X",
       href: `https://x.com/intent/tweet?text=${encodedTitle}&url=${encoded}`,
-      color: "hover:bg-black hover:text-white",
+      color: "hover:bg-black hover:text-white dark:hover:bg-chiefs-light dark:hover:text-chiefs-dark",
       icon: (
         <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
           <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.744l7.737-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
@@ -51,7 +51,7 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
     {
       label: "Copy link",
       href: null,
-      color: "hover:bg-chiefs-1 hover:text-white",
+      color: "hover:bg-chiefs-a hover:text-chiefs-dark",
       icon: (
         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
@@ -67,8 +67,8 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
   }
 
   return (
-    <div className="mt-8 pt-6 border-t border-chiefs-2">
-      <p className="font-nav text-sm text-chiefs-3 mb-3">Share this post</p>
+    <div className="mt-8 pt-6 border-t border-chiefs-2 dark:border-chiefs-4">
+      <p className="font-post-content text-sm text-chiefs-3 mb-3">Share this post</p>
       <div className="flex flex-wrap gap-2">
         {shares.map((share) =>
           share.href ? (
@@ -77,7 +77,7 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
               href={share.href}
               target="_blank"
               rel="noopener noreferrer"
-              className={`flex items-center gap-2 border border-chiefs-2 rounded-lg px-3 py-2 text-xs font-nav font-medium text-chiefs-2 transition-colors ${share.color}`}
+              className={`flex items-center gap-2 border border-chiefs-2 dark:border-chiefs-4 rounded-lg px-3 py-2 text-xs font-nav font-medium text-chiefs-2 dark:text-chiefs-4 outline-1 outline-offset-0 outline-transparent transition-[color,background-color,outline] duration-300 ease-out hover:outline-4 hover:-outline-offset-1 ${share.color}`}
             >
               {share.icon}
             </a>
@@ -86,7 +86,7 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
               key={share.label}
               type="button"
               onClick={handleCopy}
-              className={`flex items-center gap-2 border border-chiefs-2 rounded-lg px-3 py-2 text-xs font-nav font-medium text-chiefs-2 transition-colors ${share.color}`}
+              className={`flex items-center gap-2 border border-chiefs-2 dark:border-chiefs-4 rounded-lg px-3 py-2 text-xs font-nav font-medium text-chiefs-2 dark:text-chiefs-4 outline-1 outline-offset-0 outline-transparent transition-[color,background-color,outline] duration-300 ease-out hover:outline-4 hover:-outline-offset-1 ${share.color} `}
             >
               {share.icon}
               {copied ? "Copied!" : share.label}

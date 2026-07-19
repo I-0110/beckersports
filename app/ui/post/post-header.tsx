@@ -26,12 +26,12 @@ export default function PostHeader({
       )}
 
       {/* Title */}
-      <h1 className="font-logo text-3xl lg:text-4xl xl:text-5xl text-chiefs-dark leading-tight mb-4">
+      <h1 className="font-logo text-3xl lg:text-4xl xl:text-5xl text-chiefs-dark dark:text-chiefs-light mb-4">
         {title}
       </h1>
 
       {/* Meta */}
-      <p className="font-post-content text-sm italic text-chiefs-3">
+      <p className="font-post-content text-sm italic text-chiefs-3 dark:text-chiefs-5">
         {date} · {mins} min read
       </p>
     </header>

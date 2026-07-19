@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { formatDate } from "@/app/lib/post/functions";
 import { PostFooterProps } from "@/app/lib/post/interfaces";
+import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
 
 export default function PostFooter({ prev, next, related }: PostFooterProps) {
     return (
-    <footer className="mt-12 border-t border-chiefs-2 pt-8 space-y-10">
+    <footer className="mt-12 border-t border-chiefs-2 dark:border-chiefs-4 pt-8 space-y-10">
 
       {/* Prev / Next */}
       {(prev || next) && (
@@ -14,8 +15,9 @@ export default function PostFooter({ prev, next, related }: PostFooterProps) {
               href={`/posts/${prev.slug}`}
               className="group flex flex-col max-w-xs"
             >
-              <span className="font-nav text-xs text-chiefs-3 mb-1">
-                ← Previous
+              <span className="flex font-post-content text-xs text-chiefs-3 dark:text-chiefs-5 mb-1 gap-2">
+                <ArrowLeftIcon className="w-4 h-4" /> 
+                Previous
               </span>
               <span className="font-post-content text-sm text-chiefs-2 group-hover:text-chiefs-1 transition-colors line-clamp-2">
                 {prev.title}
@@ -28,10 +30,11 @@ export default function PostFooter({ prev, next, related }: PostFooterProps) {
               href={`/posts/${next.slug}`}
               className="group flex flex-col max-w-xs text-right"
             >
-              <span className="font-nav text-xs text-chiefs-3 mb-1">
-                Next →
+              <span className="flex font-post-content text-xs text-chiefs-3 dark:text-chiefs-5 mb-1 gap-2">
+                Next
+                <ArrowRightIcon className="w-4 h-4" /> 
               </span>
-              <span className="font-post-content text-sm text-chiefs-2 group-hover:text-chiefs-1 transition-colors line-clamp-2">
+              <span className="font-post-content text-sm text-chiefs-2 dark:text-chiefs-4 group-hover:text-chiefs-1 dark:group-hover:text-chiefs-a transition-colors line-clamp-2">
                 {next.title}
               </span>
             </Link>
@@ -42,7 +45,7 @@ export default function PostFooter({ prev, next, related }: PostFooterProps) {
       {/* Related posts */}
       {related.length > 0 && (
         <div>
-          <h2 className="font-logo text-xl text-chiefs-dark mb-4">
+          <h2 className="font-logo text-xl text-chiefs-dark dark:text-chiefs-light mb-4">
             Related posts
           </h2>
           <div className="flex flex-col gap-4">
@@ -52,11 +55,11 @@ export default function PostFooter({ prev, next, related }: PostFooterProps) {
                 href={`/posts/${post.slug}`}
                 className="group flex flex-col"
               >
-                <span className="font-logo text-base text-chiefs-2 group-hover:text-chiefs-1 transition-colors">
+                <span className="font-logo text-base text-chiefs-2 dark:text-chiefs-4 group-hover:text-chiefs-1 dark:group-hover:text-chiefs-a transition-colors">
                   {post.title}
                 </span>
                 {post.excerpt && (
-                  <span className="font-post-content text-sm text-chiefs-3 line-clamp-1 mt-0.5">
+                  <span className="font-post-content text-sm text-chiefs-3 dark:text-chiefs-5 text-line-clamp-2 mt-0.5">
                     {post.excerpt}
                   </span>
                 )}

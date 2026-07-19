@@ -2,8 +2,8 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --light: #ffffff;
-  --dark: #000000;
+  --background: #ffffff; /* Pure White */
+  --foreground: #000000; /* Pure Black */
 }
 
 @theme inline {
@@ -12,6 +12,7 @@
   --font-nav: "Caveat";
   --font-post-title: "Tourney";
   --font-post-content: "Lora";
+
   /* Colors */
   --color-chiefs-1: #E31837; /* Navbar background */
   --color-chiefs-a: #FFB81C; /* Accents and highlights background */
@@ -19,6 +20,10 @@
   --color-chiefs-3: #767676; /* Subtle text, captions */
   --color-chiefs-light: #ffffff; /* Page and cards background on light mode, text on dark mode */
   --color-chiefs-dark: #000000; /* Footer, overlay, page and cards background on dark mode, text on light mode */
+
+  /* Dark mode overrides */
+  --color-chiefs-4: #cfcfcf; /* Cards borders, headings */
+  --color-chiefs-5: #cecece; /* Subtle text, captions */
 }
 
 @media (prefers-color-scheme: dark) {

@@ -96,7 +96,7 @@ export default function PostForm({ categories, post }: PostFormProps) {
   }
 
   return (
-    <div className="font-post-title text-chiefs-2 max-w-3xl">
+    <div className="font-post-title text-chiefs-2max-w-3xl">
 
       {/* Title */}
       <div className="mb-5">
