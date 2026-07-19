@@ -16,7 +16,7 @@ export async function generateMetadata({
 
   if (!post) return { title: "Post not found" };
 
-  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL ?? "https://beckersports.com";
+  const baseUrl = "https://beckersports.com";
 
   return {
     title: `${post.title} | Becker Sports`,

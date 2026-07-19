@@ -59,6 +59,6 @@ export async function subscribe(input: SubscribeInput) {
 
   } catch {
     console.error("Subscribe action error:")
-    throw new Error("Subscription failed.");
+    throw new Error("You are already subscribed!");
   }
 }

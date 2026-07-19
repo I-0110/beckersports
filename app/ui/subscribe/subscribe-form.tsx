@@ -32,7 +32,7 @@ export default function SubscribeForm({ onSuccess, categories }: SubscribeFormPr
       setSuccess(true);
       onSuccess?.();
     } catch {
-      setError("Something went wrong. Please try again.");
+      setError("Welcome to Becker Sports! You are already subscribed.");
     } finally {
       setLoading(false);
     }
