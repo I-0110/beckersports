@@ -19,7 +19,7 @@ export default function PostFooter({ prev, next, related }: PostFooterProps) {
                 <ArrowLeftIcon className="w-4 h-4" /> 
                 Previous
               </span>
-              <span className="font-post-content text-sm text-chiefs-2 group-hover:text-chiefs-1 transition-colors line-clamp-2">
+              <span className="font-post-content text-sm text-chiefs-2 dark:text-chiefs-4 group-hover:text-chiefs-1 dark:group-hover:text-chiefs-a transition-colors line-clamp-2">
                 {prev.title}
               </span>
             </Link>
