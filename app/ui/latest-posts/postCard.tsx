@@ -15,7 +15,7 @@ export default function PostCard({ post }: { post: HeroPost }) {
         {/* Category top border */}
         <div className={`h-1 ${cat.bg}`} />
 
-        <div className="p-4 flex flex-col flex-1 dark:bg-chiefs-2">
+        <div className="p-4 flex flex-col flex-1">
             {/* Tag */}
             <Link href={hrefCat} className={`
                 self-start font-nav text-xs px-3 py-1 rounded-full font-bold mb-3
@@ -43,7 +43,7 @@ export default function PostCard({ post }: { post: HeroPost }) {
                 </span>
                 <Link
                     href={href}
-                    className="font-nav text-base lg:text-lg inline-flex items-center gap-2 text-chiefs-1 hover:text-chiefs-3 dark:hover:text-chiefs-light transition-all"
+                    className="font-nav text-base lg:text-lg inline-flex items-center gap-2 text-chiefs-1 dark:text-chiefs-a hover:text-chiefs-3 dark:hover:text-chiefs-light transition-all"
                 >
                     Read more
                     <ArrowRightIcon className="w-4 h-4" />
