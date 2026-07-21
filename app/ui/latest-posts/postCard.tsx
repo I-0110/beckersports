@@ -11,11 +11,11 @@ export default function PostCard({ post }: { post: HeroPost }) {
   const hrefCat = `/category/${post.category?.slug ?? ""}`;
   return (
     <div className="
-      flex w-60 sm:w-70 flex-col border border-chiefs-2 rounded-xl overflow-hidden bg-chiefs-light snap-start">
+      flex w-60 sm:w-70 flex-col border border-chiefs-2 dark:border-chiefs-4 rounded-xl overflow-hidden bg-chiefs-light dark:bg-chiefs-dark snap-start">
         {/* Category top border */}
         <div className={`h-1 ${cat.bg}`} />
 
-        <div className="p-4 flex flex-col flex-1">
+        <div className="p-4 flex flex-col flex-1 dark:bg-chiefs-2">
             {/* Tag */}
             <Link href={hrefCat} className={`
                 self-start font-nav text-xs px-3 py-1 rounded-full font-bold mb-3
@@ -26,24 +26,24 @@ export default function PostCard({ post }: { post: HeroPost }) {
 
             <Link href={href}>
                 {/* Title */}
-                <h2 className="font-logo text-base font-bold text-chiefs-2 leading-snug mb-2 flex-1">
+                <h2 className="font-logo text-base font-bold text-chiefs-2 dark:text-chiefs-4 leading-snug mb-2 flex-1">
                     {post.title}
                 </h2>
 
                 {/* Excerpt */}
-                <p className="font-post-content text-sm text-chiefs-3 leading-relaxed mb-3 line-clamp-3">
+                <p className="font-post-content text-sm text-chiefs-3 dark:text-chiefs-5 leading-relaxed mb-3 line-clamp-3">
                     {excerpt(post.content, 100)}
                 </p>
             </Link>
 
             {/* Meta row */}
-            <div className="flex justify-between items-center mt-auto pt-2 border-t border-chiefs-2">
-                <span className="font-post-content text-[10px] italic text-chiefs-3">
+            <div className="flex justify-between items-center mt-auto pt-2 border-t border-chiefs-2 dark:border-chiefs-4">
+                <span className="font-post-content text-[10px] italic text-chiefs-3 dark:text-chiefs-5">
                     {formatDate(createdAt)} · {mins} min read
                 </span>
                 <Link
                     href={href}
-                    className="font-nav text-base lg:text-lg inline-flex items-center gap-2 text-chiefs-1 hover:text-chiefs-a transition-all"
+                    className="font-nav text-base lg:text-lg inline-flex items-center gap-2 text-chiefs-1 hover:text-chiefs-3 dark:hover:text-chiefs-light transition-all"
                 >
                     Read more
                     <ArrowRightIcon className="w-4 h-4" />

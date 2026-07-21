@@ -68,7 +68,7 @@ export default function ShareButtons({ title, slug }: ShareButtonsProps) {
 
   return (
     <div className="mt-8 pt-6 border-t border-chiefs-2 dark:border-chiefs-4">
-      <p className="font-post-content text-sm text-chiefs-3 mb-3">Share this post</p>
+      <p className="font-post-content text-sm text-chiefs-3 dark:text-chiefs-5 mb-3">Share this post</p>
       <div className="flex flex-wrap gap-2">
         {shares.map((share) =>
           share.href ? (

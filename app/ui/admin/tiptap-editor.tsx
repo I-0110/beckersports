@@ -112,9 +112,9 @@ export default function TiptapEditor({ content, onChange }: TiptapEditorProps) {
     }`;
 
   return (
-    <div className="border border-chiefs-3 rounded-lg overflow-hidden bg-chiefs-light">
+    <div className="border border-chiefs-3 dark:border-chiefs-5 rounded-lg overflow-hidden bg-chiefs-light">
       {/* Toolbar */}
-      <div className="flex flex-wrap gap-1 border-b border-chiefs-3 px-2 py-2 bg-chiefs-3">
+      <div className="flex flex-wrap gap-1 border-b border-chiefs-3 dark:border-chiefs-5 px-2 py-2 bg-chiefs-3 dark:bg-chiefs-5">
         <button
           type="button"
           onClick={() => editor.chain().focus().toggleBold().run()}

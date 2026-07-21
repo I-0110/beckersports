@@ -10,7 +10,7 @@ export default function PostContent({ content }: PostContentProps) {
         prose-p:text-chiefs-2 dark:prose-p:text-chiefs-4 prose-p:leading-relaxed
         prose-a:text-chiefs-1 dark:prose-a:text-chiefs-a prose-a:underline hover:prose-a:brightness-125
         prose-strong:text-chiefs-dark dark:prose-strong:text-chiefs-light
-        prose-ul:text-chiefs-2 dark:prose-ul:text-chiefs-4 prose-ol:text-chiefs-2 dark:prose-ol:text-chiefs-4
+        prose-ul:text-chiefs-2 dark:prose-ul:text-chiefs-4 prose-ol:text-chiefs-4 dark:prose-ol:text-chiefs-4
         prose-li:my-1"
       dangerouslySetInnerHTML={{ __html: content }}
     />

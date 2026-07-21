@@ -1,6 +1,7 @@
 import Link from "next/link";
 import PostCard from "@/app/ui/latest-posts/postCard";
 import { CategoryPostProps } from "@/app/lib/post/interfaces";
+import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 
 export default function CategoryPosts({ 
     posts,
@@ -13,11 +14,11 @@ export default function CategoryPosts({
     return (
     <div>
       {/* Heading */}
-      <div className="mb-8 border-b border-chiefs-2 pb-4">
-        <h1 className="font-logo text-3xl lg:text-4xl text-chiefs-dark">
+      <div className="mb-8 border-b border-chiefs-2 dark:border-chiefs-4 pb-4">
+        <h1 className="font-logo text-3xl lg:text-4xl text-chiefs-dark dark:text-chiefs-light">
           {categoryName}
         </h1>
-        <p className="font-post-content text-sm text-chiefs-3 mt-1">
+        <p className="font-post-content text-sm text-chiefs-3 dark:text-chiefs-5 mt-1">
           {posts.length === 0 ? "No posts yet" : `Page ${currentPage} of ${totalPages}`}
         </p>
       </div>
@@ -25,14 +26,14 @@ export default function CategoryPosts({
       {/* Posts grid */}
       {posts.length === 0 ? (
         <div className="py-20 text-center">
-          <p className="font-post-content text-chiefs-3 text-base">
+          <p className="font-post-content text-chiefs-3 dark:text-chiefs-5 text-base">
             No posts in this category yet — check back soon!
           </p>
           <Link
             href="/"
-            className="mt-4 inline-block font-nav text-sm text-chiefs-1 hover:underline"
+            className="mt-4 inline-block font-nav text-sm text-chiefs-1 dark:text-chiefs-a hover:underline"
           >
-            ← Back to home
+            <ArrowLeftIcon className="h-4 w-4" /> Back to home
           </Link>
         </div>
       ) : (
@@ -45,13 +46,13 @@ export default function CategoryPosts({
 
           {/* Pagination */}
           {totalPages > 1 && (
-            <div className="flex items-center justify-between border-t border-chiefs-2 pt-6">
+            <div className="flex items-center justify-between border-t border-chiefs-2 dark:border-chiefs-4 pt-6">
               {currentPage > 1 ? (
                 <Link
                   href={`/category/${slug}?page=${currentPage - 1}`}
                   className="font-nav text-sm text-chiefs-1 hover:underline flex items-center gap-1"
                 >
-                  ← Previous
+                  <ArrowLeftIcon className="h-4 w-4" /> Previous
                 </Link>
               ) : (
                 <div />
@@ -65,8 +66,8 @@ export default function CategoryPosts({
                     href={`/category/${slug}?page=${page}`}
                     className={`font-nav text-sm w-8 h-8 flex items-center justify-center rounded-lg transition-colors ${
                       page === currentPage
-                        ? "bg-chiefs-1 text-chiefs-light font-bold"
-                        : "text-chiefs-2 hover:bg-chiefs-2/10"
+                        ? "bg-chiefs-1 dark:bg-chiefs-a text-chiefs-light dark:text-chiefs-dark font-bold"
+                        : "text-chiefs-2 dark:text-chiefs-4 hover:bg-chiefs-2/10 dark:hover:bg-chiefs-4/10"
                     }`}
                   >
                     {page}
@@ -77,9 +78,9 @@ export default function CategoryPosts({
               {currentPage < totalPages ? (
                 <Link
                   href={`/category/${slug}?page=${currentPage + 1}`}
-                  className="font-nav text-sm text-chiefs-1 hover:underline flex items-center gap-1"
+                  className="font-nav text-sm text-chiefs-1 dark:text-chiefs-a hover:underline flex items-center gap-1"
                 >
-                  Next →
+                  Next <ArrowRightIcon className="h-4 w-4" />
                 </Link>
               ) : (
                 <div />

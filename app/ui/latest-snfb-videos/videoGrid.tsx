@@ -13,7 +13,7 @@ export default function VideoGrid({ videos }: VideoGridProps) {
                 <div 
                     key={video.id} 
                     className='flex flex-col group snap-start w-70'>
-                    <div className='aspect-video relative rounded-lg overflow-hidden bg-chiefs-2/50 dark:bg-chiefs-2/5'>
+                    <div className='aspect-video relative rounded-lg overflow-hidden bg-chiefs-2/50 dark:bg-chiefs-2/50'>
                         <iframe 
                             src={`https://www.youtube.com/embed/${video.id}`}
                             title={video.title}

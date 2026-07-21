@@ -64,7 +64,7 @@ export default function SubscribeModal() {
           `}>
             <button
               onClick={handleClose}
-              className="absolute top-4 right-4 p-1 text-chiefs-3 hover:text-chiefs-light transition-colors"
+              className="absolute top-4 right-4 p-1 text-chiefs-3 dark:text-chiefs-5 hover:text-chiefs-light transition-colors"
             >
               <XMarkIcon className="w-5 h-5" />
             </button>

@@ -63,10 +63,10 @@ export default function PostFooter({ prev, next, related }: PostFooterProps) {
                     {post.excerpt}
                   </p>
                 )}
-                <span className="font-post-content text-xs italic text-chiefs-3 mt-1">
+                <span className="font-post-content text-xs italic text-chiefs-3 dark:text-chiefs-5 mt-1">
                   {formatDate(post.publishedAt ?? new Date())}
                 </span>
-                <span className="font-post-content self-end text-sm text-chiefs-1 dark:text-chiefs-a group-hover:underline">
+                <span className="font-nav text-base lg:text-lg inline-flex items-center gap-2 text-chiefs-1 dark:text-chiefs-a hover:text-chiefs-a dark:hover:text-chiefs-1 transition-all">
                   Read more...
                 </span>
               </Link>

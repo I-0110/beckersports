@@ -41,7 +41,7 @@ export default function PreferencesLoader({
 
   if (!subscriber) {
     return (
-      <p className="font-post-content text-sm text-chiefs-3 text-center py-8 animate-pulse">
+      <p className="font-post-content text-sm text-chiefs-3 dark:text-chiefs-5 text-center py-8 animate-pulse">
         Loading your preferences...
       </p>
     );

@@ -31,16 +31,6 @@ export default function AdminSidebar() {
 
     return (
         <aside className="w-48 min-h-screen bg-chiefs-light border-r border-chiefs-2 flex flex-col">
-            {/* Logo */}
-            <div className="bg-chiefs-1 h-14 flex items-center px-4 border-b border-gray-200">
-                <Link 
-                    href="/" 
-                    className="font-logo font-bold text-chiefs-a"
-                >
-                    Becker Sports
-                </Link>
-            </div>
-
             {/* Navigation */}
             <nav className="font-nav flex-1 p-3 flex flex-col gap-1">
                 {navItems.map((item) => {
@@ -54,8 +44,8 @@ export default function AdminSidebar() {
                             href={item.href}
                             className={`flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors ${
                                 isActive
-                                    ? "bg-chiefs-2 text-chiefs-1"
-                                    : "text-chiefs-dark hover:bg-chiefs-3 hover:text-chiefs-light"
+                                    ? "border border-chiefs-1 text-chiefs-dark hover:bg-chiefs-1 hover:text-chiefs-a"
+                                    : "text-chiefs-dark hover:bg-chiefs-a hover:text-chiefs-2"
                             }`}
                         >
                             <item.icon className="h-5 w-5" />
@@ -69,7 +59,7 @@ export default function AdminSidebar() {
             <div className="p-3 border-t border-chiefs-3">
                 <button
                     onClick={() => signOut()}
-                    className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors text-chiefs-dark hover:bg-chiefs-1 hover:text-chiefs-light"
+                    className="flex items-center gap-3 px-3 py-2 rounded-lg text-sm transition-colors text-chiefs-dark  hover:bg-chiefs-1 hover:text-chiefs-a"
                 >
                     <PowerIcon className="h-5 w-5" />
                     <span>Sign out</span>

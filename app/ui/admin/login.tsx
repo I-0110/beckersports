@@ -63,7 +63,7 @@ export default function LoginForm() {
         "
       >
         <h1 className="text-chiefs-a text-2xl font-bold mb-2">Becker Sports</h1>
-        <p className="text-chiefs-light font-post-content text-lg mb-4">Admin login</p>
+        <p className="text-chiefs-light dark:text-chiefs-dark font-post-content text-lg mb-4">Admin login</p>
 
         {error && <p className="text-yellow-400 text-sm">{error}</p>}
 

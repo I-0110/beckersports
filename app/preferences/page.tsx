@@ -21,7 +21,7 @@ export default async function PreferencesPage({
     <div className="min-h-screen bg-chiefs-dark">
       <div className="bg-chiefs-1 py-10 px-6 text-center">
         <h1 className="font-logo text-3xl text-chiefs-a">Becker Sports</h1>
-        <p className="font-post-content text-sm text-chiefs-light mt-1">
+        <p className="font-post-content text-sm text-chiefs-light dark:text-chiefs-dark mt-1">
           Manage your subscription preferences
         </p>
       </div>

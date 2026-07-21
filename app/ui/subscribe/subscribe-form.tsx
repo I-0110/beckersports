@@ -45,7 +45,7 @@ export default function SubscribeForm({ onSuccess, categories }: SubscribeFormPr
         <h3 className="font-logo text-xl text-chiefs-dark mb-2">
           You&apos;re in!
         </h3>
-        <p className="font-post-content text-sm text-chiefs-3">
+        <p className="font-post-content text-sm text-chiefs-3 dark:text-chiefs-5">
           Check your inbox for a welcome email from Becker Sports.
         </p>
       </div>
@@ -106,7 +106,7 @@ export default function SubscribeForm({ onSuccess, categories }: SubscribeFormPr
             );
           })}
         </div>
-        <p className="font-post-content text-xs text-chiefs-3 mt-1.5">
+        <p className="font-post-content text-xs text-chiefs-3 dark:text-chiefs-5 mt-1.5">
           Leave all unselected to receive everything.
         </p>
       </div>
@@ -126,7 +126,7 @@ export default function SubscribeForm({ onSuccess, categories }: SubscribeFormPr
         {loading ? "Subscribing..." : "Subscribe 🏈"}
       </button>
 
-      <p className="font-post-content text-xs text-chiefs-3 text-center">
+      <p className="font-post-content text-xs text-chiefs-3 dark:text-chiefs-5 text-center">
         No spam, ever. Unsubscribe anytime.
       </p>
     </div>

@@ -29,7 +29,7 @@ export default function UnsubscribeHandler({ email, token }: UnsubscribeHandlerP
   if (status === "loading") {
     return (
       <div className="text-center py-20">
-        <p className="font-post-content text-chiefs-3 text-base animate-pulse">
+        <p className="font-post-content text-chiefs-3 dark:text-chiefs-5 text-base animate-pulse">
           Processing your request...
         </p>
       </div>
@@ -43,7 +43,7 @@ export default function UnsubscribeHandler({ email, token }: UnsubscribeHandlerP
         <h2 className="font-logo text-2xl text-chiefs-dark mb-3">
           You&apos;ve been unsubscribed
         </h2>
-        <p className="font-post-content text-sm text-chiefs-3 mb-6">
+        <p className="font-post-content text-sm text-chiefs-3 dark:text-chiefs-5 mb-6">
           You won&apos;t receive any more emails from Becker Sports.
         </p>
         <Link

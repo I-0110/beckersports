@@ -19,7 +19,7 @@ export default async function SubscribePage() {
         <h1 className="font-logo text-4xl lg:text-5xl text-chiefs-a mb-3">
           Stay in the game
         </h1>
-        <p className="font-post-content text-base text-chiefs-light max-w-md mx-auto">
+        <p className="font-post-content text-base text-chiefs-light dark:text-chiefs-dark max-w-md mx-auto">
           Get the latest Chiefs coverage and NFL analysis delivered straight to your inbox.
         </p>
       </div>

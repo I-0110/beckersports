@@ -56,7 +56,7 @@ export default function PreferencesForm({
         <h3 className="font-logo text-xl text-chiefs-dark mb-2">
           Preferences updated!
         </h3>
-        <p className="font-post-content text-sm text-chiefs-3">
+        <p className="font-post-content text-sm text-chiefs-3 dark:text-chiefs-5">
           Your subscription has been updated successfully.
         </p>
       </div>
@@ -67,7 +67,7 @@ export default function PreferencesForm({
     <div className="flex flex-col gap-5">
       {/* Name */}
       <div>
-        <label className="block text-sm font-medium text-chiefs-2 mb-1.5">
+        <label className="block text-sm font-medium text-chiefs-2 dark:text-chiefs-4 mb-1.5">
           Your name
         </label>
         <input
@@ -80,7 +80,7 @@ export default function PreferencesForm({
 
       {/* Email */}
       <div>
-        <label className="block text-sm font-medium text-chiefs-2 mb-1.5">
+        <label className="block text-sm font-medium text-chiefs-2 dark:text-chiefs-4 mb-1.5">
           Your email
         </label>
         <input
@@ -93,7 +93,7 @@ export default function PreferencesForm({
 
       {/* Categories */}
       <div>
-        <label className="block text-sm font-medium text-chiefs-2 mb-2">
+        <label className="block text-sm font-medium text-chiefs-2 dark:text-chiefs-4 mb-2">
           Topics you want to receive
         </label>
         <div className="flex flex-wrap gap-2">
@@ -107,7 +107,7 @@ export default function PreferencesForm({
                 className={`font-nav text-xs px-3 py-1.5 rounded-full font-bold border transition-colors ${
                   active
                     ? "bg-chiefs-1 text-chiefs-light border-chiefs-1"
-                    : "bg-white text-chiefs-2 border-gray-200 hover:border-chiefs-1 hover:text-chiefs-1"
+                    : "bg-white text-chiefs-2 dark:text-chiefs-4 border-gray-200 hover:border-chiefs-1 hover:text-chiefs-1"
                 }`}
               >
                 {cat.name}
@@ -115,7 +115,7 @@ export default function PreferencesForm({
             );
           })}
         </div>
-        <p className="font-post-content text-xs text-chiefs-3 mt-1.5">
+        <p className="font-post-content text-xs text-chiefs-3 dark:text-chiefs-5 mt-1.5">
           Leave all unselected to receive everything.
         </p>
       </div>

@@ -96,7 +96,7 @@ export default function PostForm({ categories, post }: PostFormProps) {
   }
 
   return (
-    <div className="font-post-title text-chiefs-2max-w-3xl">
+    <div className="font-post-title text-chiefs-2 dark:text-chiefs-4 max-w-3xl">
 
       {/* Title */}
       <div className="mb-5">
@@ -155,7 +155,7 @@ export default function PostForm({ categories, post }: PostFormProps) {
           className="border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
         />
         {scheduledAt && (
-          <p className="font-post-content text-xs text-chiefs-3 mt-1">
+          <p className="font-post-content text-xs text-chiefs-3 dark:text-chiefs-5 mt-1">
             Will auto-publish and notify subscribers at this time.
           </p>
         )}

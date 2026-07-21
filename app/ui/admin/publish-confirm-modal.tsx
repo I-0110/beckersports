@@ -29,7 +29,7 @@ export default function PublishConfirmModal({
         <h2 className="font-logo text-xl text-chiefs-dark mb-2">
           Publish post?
         </h2>
-        <p className="font-post-content text-sm text-chiefs-3 mb-6 line-clamp-2">
+        <p className="font-post-content text-sm text-chiefs-3 dark:text-chiefs-5 mb-6 line-clamp-2">
           &quot;{postTitle}&quot;
         </p>
 
@@ -53,7 +53,7 @@ export default function PublishConfirmModal({
             <p className="font-nav text-sm font-medium text-chiefs-dark">
               Notify subscribers
             </p>
-            <p className="font-post-content text-xs text-chiefs-3">
+            <p className="font-post-content text-xs text-chiefs-3 dark:text-chiefs-5">
               Send email to matching subscribers
             </p>
           </div>

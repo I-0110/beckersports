@@ -16,7 +16,7 @@ export default function CardCarousel({
         <section className="bg-chiefs-light py-6 px-6 sm:px-8 lg:px-12">
 
             {/* Section Header */}
-            <div className="flex items-center justify-between mb-4 pb-3 border-b border-chiefs-2">
+            <div className="flex items-center justify-between mb-4 pb-3 border-b border-chiefs-2 dark:border-chiefs-4">
                 <h2 className='font-logo text-sm tracking-wider uppercase text-chiefs-2'>{title}</h2>
                 <Link
                     href={viewAllHref}

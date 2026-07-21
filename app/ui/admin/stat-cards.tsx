@@ -22,7 +22,7 @@ export default function StatCards({ total, published, drafts }: StatCardsProps) 
     return (
         <div className="grid grid-cols-3 gap-4 mb-6">
             {stats.map((stat) => (
-                <div key={stat.label} className="font-nav bg-chiefs-3 p-6 rounded-lg shadow">
+                <div key={stat.label} className="font-nav bg-chiefs-3 dark:bg-chiefs-5 p-6 rounded-lg shadow">
                     <h3 className="text-lg font-semibold">{stat.label}</h3>
                     <p className={`text-3xl font-bold ${stat.accent ? 'text-chiefs-a' : ''}`}>{stat.value}</p>
                 </div>
