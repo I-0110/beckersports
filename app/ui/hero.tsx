@@ -60,7 +60,7 @@ export default function Hero({ posts }: { posts: HeroPost[] }) {
       {/* CTA */}
       <Link
         href={href}
-        className="font-nav text-base lg:text-lg inline-flex items-center gap-2 text-chiefs-a hover:brightness-150 transition-all"
+        className="font-nav text-base lg:text-lg inline-flex items-center gap-2 text-chiefs-1 dark:text-chiefs-a hover:text-chiefs-3 dark:hover:text-chiefs-light transition-all"
       >
         Read more
         <ArrowRightIcon className="w-4 h-4" />

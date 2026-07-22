@@ -66,8 +66,9 @@ export default function PostFooter({ prev, next, related }: PostFooterProps) {
                 <span className="font-post-content text-xs italic text-chiefs-3 dark:text-chiefs-5 mt-1">
                   {formatDate(post.publishedAt ?? new Date())}
                 </span>
-                <span className="font-nav text-base lg:text-lg inline-flex items-center gap-2 text-chiefs-1 dark:text-chiefs-a hover:text-chiefs-a dark:hover:text-chiefs-1 transition-all">
-                  Read more...
+                <span className="font-nav text-base lg:text-lg inline-flex items-center gap-2 text-chiefs-1 dark:text-chiefs-a hover:text-chiefs-3 dark:hover:text-chiefs-light transition-all">
+                  Read more
+                  <ArrowRightIcon className="w-4 h-4" />
                 </span>
               </Link>
             ))}

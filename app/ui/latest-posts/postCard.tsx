@@ -11,7 +11,7 @@ export default function PostCard({ post }: { post: HeroPost }) {
   const hrefCat = `/category/${post.category?.slug ?? ""}`;
   return (
     <div className="
-      flex w-60 sm:w-70 flex-col border border-chiefs-2 dark:border-chiefs-4 rounded-xl overflow-hidden bg-chiefs-light dark:bg-chiefs-dark snap-start">
+      flex w-60 sm:w-70 flex-col border border-chiefs-2 dark:border-chiefs-4 rounded-xl overflow-hidden bg-chiefs-light dark:bg-chiefs-2 snap-start">
         {/* Category top border */}
         <div className={`h-1 ${cat.bg}`} />
 
