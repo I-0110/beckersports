@@ -64,21 +64,21 @@ export default function SubscribeForm({ onSuccess, categories }: SubscribeFormPr
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Patrick"
-          className="font-nav w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-chiefs-a focus:border-transparent"
+          className="font-nav w-full border border-gray-200 rounded-lg px-3 py-2 text-2xl outline-none focus:ring-2 focus:ring-chiefs-a focus:border-transparent"
         />
       </div>
 
       {/* Email */}
       <div>
-        <label className="uppercase block text-sm font-medium text-chiefs-light mb-1.5">
+        <label className="uppercase block text-xl font-medium text-chiefs-light mb-1.5">
           Your email
         </label>
         <input
           type="email"
+          className="font-nav w-full border border-gray-200 rounded-lg px-3 py-2 text-2xl outline-none focus:ring-2 focus:ring-chiefs-a focus:border-transparent"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@example.com"
-          className="font-nav w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-chiefs-a focus:border-transparent"
         />
       </div>
 
