@@ -12,7 +12,7 @@ export async function POST(request: Request) {
 
   const { data, error } = await resend.emails.send({
     from: "Becker Sports <noreply@beckersports.com>",
-    to: "hello@beckersports.com",
+    to: "ivelisbecker@gmail.com",
     replyTo: email,
     subject: `[Contact] ${reason} — ${name}`,
     text: `From: ${name} (${email})\nReason: ${reason}\n\n${message}`,
