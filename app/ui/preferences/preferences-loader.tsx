@@ -5,11 +5,12 @@ import { getSubscriberByToken } from "@/app/lib/actions/preferences-actions";
 import PreferencesForm from "./preferences-form";
 import Link from "next/link";
 import { PreferencesLoaderProps, Subscriber } from "@/app/lib/post/interfaces";
+import { ArrowLeftIcon, ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 
 export default function PreferencesLoader({
   email,
   token,
-  availableCategories,
+  categories,
 }: PreferencesLoaderProps) {
   const [subscriber, setSubscriber] = useState<Subscriber | null>(null);
   const [error, setError] = useState("");
@@ -29,11 +30,11 @@ export default function PreferencesLoader({
   if (error) {
     return (
       <div className="text-center py-8">
-        <div className="text-4xl mb-3">⚠️</div>
+        <div className="text-4xl mb-3"><ExclamationTriangleIcon className="w-4 h-4" /></div>
         <h3 className="font-logo text-xl text-chiefs-dark mb-2">Invalid link</h3>
         <p className="font-post-content text-sm text-red-500 mb-4">{error}</p>
         <Link href="/" className="font-nav text-sm text-chiefs-1 hover:underline">
-          ← Back to Becker Sports
+          <ArrowLeftIcon className="w-4 h-4" /> Back to Becker Sports
         </Link>
       </div>
     );
@@ -51,7 +52,7 @@ export default function PreferencesLoader({
     <PreferencesForm
       subscriber={subscriber}
       token={token}
-      availableCategories={availableCategories}
+      categories={categories}
     />
   );
 }

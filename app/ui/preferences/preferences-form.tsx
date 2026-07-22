@@ -7,7 +7,7 @@ import { PreferencesFormProps } from "@/app/lib/post/interfaces";
 export default function PreferencesForm({
   subscriber,
   token,
-  availableCategories,
+  categories,
 }: PreferencesFormProps) {
   const [name, setName] = useState(subscriber.name);
   const [email, setEmail] = useState(subscriber.email);
@@ -64,40 +64,42 @@ export default function PreferencesForm({
   }
 
   return (
-    <div className="flex flex-col gap-5">
+<div className="flex flex-col gap-4">
       {/* Name */}
       <div>
-        <label className="block text-sm font-medium text-chiefs-2 dark:text-chiefs-4 mb-1.5">
+        <label className="uppercase block text-sm font-medium text-chiefs-light mb-1.5">
           Your name
         </label>
         <input
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
-          className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-chiefs-1 focus:border-transparent"
+          placeholder="Patrick"
+          className="font-nav w-full border border-gray-200 rounded-lg px-3 py-2 text-2xl outline-none focus:ring-2 focus:ring-chiefs-a focus:border-transparent"
         />
       </div>
 
       {/* Email */}
       <div>
-        <label className="block text-sm font-medium text-chiefs-2 dark:text-chiefs-4 mb-1.5">
+        <label className="uppercase block text-sm font-medium text-chiefs-light mb-1.5">
           Your email
         </label>
         <input
           type="email"
+          className="font-nav w-full border border-gray-200 rounded-lg px-3 py-2 text-2xl outline-none focus:ring-2 focus:ring-chiefs-a focus:border-transparent"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-chiefs-1 focus:border-transparent"
+          placeholder="you@example.com"
         />
       </div>
 
       {/* Categories */}
       <div>
-        <label className="block text-sm font-medium text-chiefs-2 dark:text-chiefs-4 mb-2">
-          Topics you want to receive
+        <label className="uppercase block text-sm font-medium text-chiefs-light mb-1.5">
+          Topics you would like to add, remove, or modify.
         </label>
         <div className="flex flex-wrap gap-2">
-          {availableCategories.map((cat) => {
+          {categories.map((cat) => {
             const active = selectedCategories.includes(cat.slug);
             return (
               <button
@@ -107,7 +109,7 @@ export default function PreferencesForm({
                 className={`font-nav text-xs px-3 py-1.5 rounded-full font-bold border transition-colors ${
                   active
                     ? "bg-chiefs-1 text-chiefs-light border-chiefs-1"
-                    : "bg-white text-chiefs-2 dark:text-chiefs-4 border-gray-200 hover:border-chiefs-1 hover:text-chiefs-1"
+                    : "bg-white/10 text-chiefs-light border-chiefs-3 hover:border-chiefs-1 hover:text-chiefs-a"
                 }`}
               >
                 {cat.name}

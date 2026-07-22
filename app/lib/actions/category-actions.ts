@@ -43,3 +43,14 @@ export async function deleteCategory(id: string) {
   await db.category.delete({ where: { id } });
   revalidatePath("/admin/categories");
 }
+
+export async function getAllCategories() {
+  return db.category.findMany({
+    where: {
+      posts: {
+        some: { published: true },
+      },
+    },
+    orderBy: { name: "asc" },
+  });
+}

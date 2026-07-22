@@ -32,7 +32,7 @@ export default function SubscribeForm({ onSuccess, categories }: SubscribeFormPr
       setSuccess(true);
       onSuccess?.();
     } catch {
-      setError("Welcome to Becker Sports! You are already subscribed.");
+      setError("Hey, there! You are already subscribed.");
     } finally {
       setLoading(false);
     }
@@ -70,7 +70,7 @@ export default function SubscribeForm({ onSuccess, categories }: SubscribeFormPr
 
       {/* Email */}
       <div>
-        <label className="uppercase block text-xl font-medium text-chiefs-light mb-1.5">
+        <label className="uppercase block text-sm font-medium text-chiefs-light mb-1.5">
           Your email
         </label>
         <input
@@ -123,7 +123,7 @@ export default function SubscribeForm({ onSuccess, categories }: SubscribeFormPr
         onClick={handleSubmit}
         className="w-full bg-chiefs-1 hover:bg-red-700 text-white font-nav font-bold py-3 rounded-lg transition-colors disabled:opacity-50"
       >
-        {loading ? "Subscribing..." : "Subscribe 🏈"}
+        {loading ? "Subscribing..." : "Subscribe"}
       </button>
 
       <p className="font-post-content text-xs text-chiefs-3 dark:text-chiefs-5 text-center">

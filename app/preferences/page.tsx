@@ -1,39 +1,16 @@
-import { redirect } from "next/navigation";
-import { db } from "@/app/lib/db";
-import PreferencesLoader from "@/app/ui/preferences/preferences-loader";
+import PreferencesPageContent from "@/app/ui/preferences/preferences-content";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Email Preferences | Becker Sports",
+};
 
 export default async function PreferencesPage({
   searchParams,
 }: {
-  searchParams: Promise<{ email?: string; token?: string }>;
+  searchParams: Promise<{ token?: string; email?: string; }>;
 }) {
-  const { email, token } = await searchParams;
+  const { token, email } = await searchParams;
 
-  if (!email || !token) redirect("/");
-
-  const availableCategories = await db.category.findMany({
-    where: { posts: { some: { published: true } } },
-    orderBy: { name: "asc" },
-    select: { name: true, slug: true },
-  });
-
-  return (
-    <div className="min-h-screen bg-chiefs-dark">
-      <div className="bg-chiefs-1 py-10 px-6 text-center">
-        <h1 className="font-logo text-3xl text-chiefs-a">Becker Sports</h1>
-        <p className="font-post-content text-sm text-chiefs-light dark:text-chiefs-dark mt-1">
-          Manage your subscription preferences
-        </p>
-      </div>
-      <div className="max-w-md mx-auto px-6 py-12">
-        <div className="bg-white rounded-2xl p-8 shadow-lg">
-          <PreferencesLoader
-            email={email}
-            token={token}
-            availableCategories={availableCategories}
-          />
-        </div>
-      </div>
-    </div>
-  );
+  return <PreferencesPageContent token={token} email={email} />;
 }

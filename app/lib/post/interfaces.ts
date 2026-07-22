@@ -90,13 +90,13 @@ export interface Subscriber {
 export interface PreferencesFormProps {
   subscriber: Subscriber;
   token: string;
-  availableCategories: Categories[];
+  categories: Categories[];
 }
 
 export interface PreferencesLoaderProps {
   email: Subscriber["email"];
   token: string;
-  availableCategories: Categories[];
+  categories: Categories[];
 }
 
 export interface PostInput {
