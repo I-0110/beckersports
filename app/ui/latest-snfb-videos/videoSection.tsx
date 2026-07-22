@@ -14,7 +14,7 @@ export default async function VideoSection() {
  
       {/* Header */}
       <div className="flex items-center justify-between mb-4 pb-3 border-b border-chiefs-light">
-        <h2 className="font-logo text-sm tracking-wider uppercase text-chiefs-light">
+        <h2 className="font-logo tracking-wider uppercase text-2xl lg:text-3xl xl:text-4xl text-chiefs-a leading-tight">
           Sunday Night Foodball Videos
         </h2>
         <Link
@@ -23,7 +23,7 @@ export default async function VideoSection() {
           rel="noopener noreferrer"
           className="font-nav text-base lg:text-lg inline-flex items-center gap-2 text-chiefs-a hover:brightness-150 transition-all"
         >
-          Watch all on YouTube
+          Watch more on YouTube
           <ArrowRightIcon className="w-4 h-4" />
         </Link>
       </div>
