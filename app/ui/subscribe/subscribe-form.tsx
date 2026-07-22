@@ -56,7 +56,7 @@ export default function SubscribeForm({ onSuccess, categories }: SubscribeFormPr
     <div className="flex flex-col gap-4">
       {/* Name */}
       <div>
-        <label className="block text-sm font-medium text-chiefs-light mb-1.5">
+        <label className="uppercase block text-sm font-medium text-chiefs-light mb-1.5">
           Your name
         </label>
         <input
@@ -64,13 +64,13 @@ export default function SubscribeForm({ onSuccess, categories }: SubscribeFormPr
           value={name}
           onChange={(e) => setName(e.target.value)}
           placeholder="Patrick"
-          className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-chiefs-1 focus:border-transparent"
+          className="font-nav w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-chiefs-a focus:border-transparent"
         />
       </div>
 
       {/* Email */}
       <div>
-        <label className="block text-sm font-medium text-chiefs-light mb-1.5">
+        <label className="uppercase block text-sm font-medium text-chiefs-light mb-1.5">
           Your email
         </label>
         <input
@@ -78,13 +78,13 @@ export default function SubscribeForm({ onSuccess, categories }: SubscribeFormPr
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="you@example.com"
-          className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-chiefs-1 focus:border-transparent"
+          className="font-nav w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-chiefs-a focus:border-transparent"
         />
       </div>
 
       {/* Categories */}
       <div>
-        <label className="block text-sm font-medium text-chiefs-light mb-2">
+        <label className="uppercase block text-sm font-medium text-chiefs-light mb-1.5">
           Topics you care about
         </label>
         <div className="flex flex-wrap gap-2">
@@ -113,7 +113,7 @@ export default function SubscribeForm({ onSuccess, categories }: SubscribeFormPr
 
       {/* Error */}
       {error && (
-        <p className="text-red-500 text-sm">{error}</p>
+        <p className="font-post-content text-xs text-red-500">{error}</p>
       )}
 
       {/* Submit */}

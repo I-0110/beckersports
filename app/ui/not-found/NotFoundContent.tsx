@@ -26,7 +26,7 @@ export default function NotFoundContent() {
           Back to home
         </Link>
         <Link
-          href="/category/latest"
+          href="/posts"
           className="flex items-center justify-center gap-2 rounded-lg bg-chiefs-a border border-chiefs-dark px-6 py-3 font-semibold text-chiefs-1 transition hover:bg-chiefs-1 hover:text-chiefs-a"
         >
           Latest posts
