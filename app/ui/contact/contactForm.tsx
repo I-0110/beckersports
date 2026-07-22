@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 
 const REASONS = [
   "General feedback",
@@ -15,13 +16,13 @@ type Status = "idle" | "submitting" | "success" | "error";
 export default function ContactForm() {
   const [status, setStatus] = useState<Status>("idle");
   const [form, setForm] = useState({
-    name: "Patrick",
-    email: "you@example.com",
+    name: "",
+    email: "",
     reason: REASONS[0],
     message: "",
   });
 
-  async function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setStatus("submitting");
 
@@ -43,9 +44,25 @@ export default function ContactForm() {
 
   if (status === "success") {
     return (
-      <p className="font-post-content text-chiefs-a text-sm">
-        Thanks — your message is in. We&apos;ll get back to you soon.
-      </p>
+      <div className="flex flex-col items-center gap-4 text-center py-6">
+        <p className="font-post-content text-chiefs-a text-sm">
+          Thanks — your message is in. We&apos;ll get back to you soon.
+        </p>
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <Link
+            href="/"
+            className="rounded-lg bg-chiefs-a px-5 py-2 text-sm font-semibold text-chiefs-dark hover:brightness-125 transition-all"
+          >
+            Back to home
+          </Link>
+          <Link
+            href="/posts"
+            className="rounded-lg border border-chiefs-a px-5 py-2 text-sm font-semibold text-chiefs-a hover:bg-chiefs-a/10 transition-all"
+          >
+            Read latest posts
+          </Link>
+        </div>
+      </div>
     );
   }
 
@@ -60,6 +77,7 @@ export default function ContactForm() {
           required
           value={form.name}
           onChange={(e) => setForm({ ...form, name: e.target.value })}
+          placeholder="Patrick"
           className="font-post-content w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-chiefs-a focus:border-transparent"
         />
       </div>
@@ -73,6 +91,7 @@ export default function ContactForm() {
           required
           value={form.email}
           onChange={(e) => setForm({ ...form, email: e.target.value })}
+          placeholder="you@example.com"
           className="font-post-content w-full border border-gray-200 rounded-lg px-3 py-2 text-sm outline-none focus:ring-2 focus:ring-chiefs-a focus:border-transparent"
         />
       </div>
