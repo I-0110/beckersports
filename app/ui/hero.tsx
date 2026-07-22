@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowRightIcon, FireIcon } from '@heroicons/react/24/outline';
+import { ArrowRightIcon } from '@heroicons/react/24/outline';
 import { HeroPost } from '../lib/post/interfaces';
 import { getCategoryConfig, readTime, formatDate, excerpt } from '../lib/post/functions';
 
@@ -40,7 +40,6 @@ export default function Hero({ posts }: { posts: HeroPost[] }) {
             ${cat.bg} ${cat.text}
           `}
         >
-          <FireIcon className="w-4 h-4" />
           {cat.label}
         </span>
         <span className="font-post-content text-xs italic text-chiefs-3">

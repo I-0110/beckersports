@@ -42,3 +42,21 @@ export async function getNextPosts(publishedAt: Date, categoryId: string | null)
 
   return { prev, next, related };
 }
+
+export async function getAllPublishedPosts(page: number = 1, perPage: number = 12) {
+  const [posts, totalPosts] = await Promise.all([
+    db.post.findMany({
+      where: { published: true },
+      orderBy: { publishedAt: "desc" },
+      skip: (page - 1) * perPage,
+      take: perPage,
+      include: { category: true },
+    }),
+    db.post.count({ where: { published: true } }),
+  ]);
+
+  return { 
+    posts, 
+    totalPages: Math.ceil(totalPosts / perPage),
+  };
+}

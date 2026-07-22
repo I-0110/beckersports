@@ -17,7 +17,9 @@ export default function PostCard({ post }: { post: HeroPost }) {
 
         <div className="p-4 flex flex-col flex-1">
             {/* Tag */}
-            <Link href={hrefCat} className={`
+            <Link 
+                href={hrefCat} 
+                className={`
                 self-start font-nav text-xs px-3 py-1 rounded-full font-bold mb-3
                 ${cat.bg} ${cat.text}
             `}>
@@ -26,12 +28,12 @@ export default function PostCard({ post }: { post: HeroPost }) {
 
             <Link href={href}>
                 {/* Title */}
-                <h2 className="font-logo text-base font-bold text-chiefs-2 dark:text-chiefs-4 leading-snug mb-2 flex-1">
+                <h2 className="mt-1 text-lg font-bold group-hover:text-chiefs-1 dark:group-hover:text-chiefs-a">
                     {post.title}
                 </h2>
 
                 {/* Excerpt */}
-                <p className="font-post-content text-sm text-chiefs-3 dark:text-chiefs-5 leading-relaxed mb-3 line-clamp-3">
+                <p className="font-post-content mt-2 line-clamp-3 text-sm text-chiefs-2 dark:text-chiefs-4">
                     {excerpt(post.content, 100)}
                 </p>
             </Link>
